@@ -1,5 +1,0 @@
-#!/bin/sh
-
-echo 1 > /noremove/checkmac.txt
-
-/sbin/jffs2reset $@

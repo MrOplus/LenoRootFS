@@ -1,0 +1,758 @@
+// 隐藏版头页面
+function hide_Table_Body()
+{
+	$("#Table_Body").hide();
+    $("#iran_table_title").hide();
+    $("#iran_table_current").hide();
+    $("#iran_table_footer").hide();
+
+	// 显示登陆页背景
+    if(g_web_show != WEB_SMART && g_web_show != WEB_IRAN)
+        $("#Table_login").css("background","url(../images/login_background_" + g_language + ".png) no-repeat center");
+    	// $("#Table_login").css("background","url(../images/login_background_en.png) no-repeat center");
+
+	$("#Table_login").css("width","100%");
+	$("#Table_login").css("height","100%");
+	// 隐藏主页背景
+	$("#Table_Body").css("background-image","url()");
+}
+
+// 显示版头页面
+function show_Table_Body()
+{
+	$("#Table_Body").show();
+
+	// 显示登主页背景
+        if(g_web_show == WEB_SMART)
+            $("#Table_Body").css("background","url(../images/smart_main.png) no-repeat");
+        else if(g_web_show == WEB_IRAN){
+            $("#iran_table_title").show();
+            $("#iran_table_current").show();
+            $("#iran_table_footer").show();
+            $("#Table_Body").css("background-image","url()");
+		}
+        else
+	    $("#Table_Body").css("background","url(../images/main_background.png) no-repeat");
+    
+	// $("#Table_login").css("background-image","url(../images/main_background.png)");
+	// 影藏登陆页背景
+	$("#main_body").css("background-image","");
+
+}
+
+// Session超时检查事件
+function timerIncrement()
+{
+	idleTime = idleTime + 1;
+	if (idleTime > (Session_inactivity_timeout-1))
+	{
+		//session超时失效，清空所有定时刷新事件
+		idleInterval = window.clearInterval(idleInterval);//session检查
+		headleHeadLoad = window.clearInterval(headleHeadLoad);//状态栏
+		deviceListInfoLoad = window.clearInterval(deviceListInfoLoad);//已连接设备列表
+		MainInfooLoadIdl = window.clearInterval(MainInfooLoadIdl);//主页刷新数据
+		TimeSeting = window.clearInterval(TimeSeting);//时间刷新
+		var timeout_update = Session_inactivity_timeout * 60;
+		$.ajax({
+			type: "POST",
+			url: "cgi-bin/qcmap_auth",
+			data:
+			{
+				type: "close",
+				timeout: timeout_update
+			 },
+			dataType: "text",
+			success: function(msgs){
+				if(msgs.length > 0){
+					var obj = jQuery.parseJSON(msgs);
+					if(obj.result == 0){
+						hide_Table_Body();
+						show_login();
+						loadloginpage('QCMAP_login.html');
+
+						window.wxc.xcConfirm(jQuery.i18n.prop("SessionTimedOut"), window.wxc.xcConfirm.typeEnum.info);
+					}else if(obj.result== 8 || obj.result== 9 || obj.result== 10 || obj.result== 11 || obj.result== 12 || obj.result== 13){						
+						hide_Table_Body();
+						show_login();
+						loadloginpage('QCMAP_login.html');	
+						Session_inactivity_timeout = 5;
+					}else{
+						hide_Table_Body();
+						show_login();
+						loadloginpage('QCMAP_login.html');
+
+						window.wxc.xcConfirm(jQuery.i18n.prop("SessionTimedOut"), window.wxc.xcConfirm.typeEnum.info);
+					}
+
+					// 超时后，提示超时，后刷新页面
+					//setTimeout(function(){
+					//	location.reload();
+					//},3000);
+					
+				}else{
+					window.wxc.xcConfirm(jQuery.i18n.prop("NoResponseServer"), window.wxc.xcConfirm.typeEnum.info);
+				}
+			}
+		});
+	}
+}
+
+// 浏览器关闭和刷新触发事件
+function closeIt()
+{
+	var timeout_update = Session_inactivity_timeout*60;
+	$.ajax(
+	{
+		type: "POST",
+		url: "cgi-bin/qcmap_auth",
+		data:
+		{
+			type: "close",
+			timeout: timeout_update
+		},
+		dataType: "text",
+		success: function(msgs){
+			if(msgs.length > 0)
+			{
+				var obj = jQuery.parseJSON(msgs);
+				if(obj.result== 8 || obj.result== 9 || obj.result== 10 || obj.result== 11 || obj.result== 12 || obj.result== 13){												
+					hide_Table_Body();
+					show_login();
+					loadloginpage('QCMAP_login.html');
+					Session_inactivity_timeout = 5;
+				}else{
+
+					window.wxc.xcConfirm(jQuery.i18n.prop("SessionTimedOut"), window.wxc.xcConfirm.typeEnum.info);
+				}
+
+			}else{
+				window.wxc.xcConfirm(jQuery.i18n.prop("NoResponseServer"), window.wxc.xcConfirm.typeEnum.info);
+			}
+		}
+	});
+	// window.wxc.xcConfirm(jQuery.i18n.prop("BrowserClosing"), window.wxc.xcConfirm.typeEnum.info);
+	return;
+}
+
+// 添加国际化数据
+function i18(key){
+	$('#' + key).text(jQuery.i18n.prop(key));
+}
+
+// 加载菜单
+function loadHomeProperties(){
+	i18('Menu_l');
+	i18('NAT_Settings_l');
+	i18('Firewall_Settings_l');
+	i18('WLAN_Setting_l');
+	i18('User_Settings_l');
+	i18('UPnP_DLNA_MDNS_l');
+	i18('IPV4_Settings_l');
+	i18('IPV6_Settings_l');
+	i18('Logout_Settings_l');
+	i18('Home_Settings_l');
+	i18('System_Settings_l');
+	i18('Traffic_Settings_l');
+	i18('Clients_info_l');
+	i18('Network_Setting_l');
+	i18('Network_Diagnostics_l');
+	i18('WWAN_Settings_l');
+	i18('Message_l');
+	i18('Upgrade_l');
+	i18('Security_Setting_l');
+	i18('DeviceInfo_l');
+	i18('APN_Settings_l');   
+	i18('PLMN_Setting_l');
+    i18('USSD_Setting_l');
+	$("#head_signal_length").attr("title",jQuery.i18n.prop("signal_title"));
+	$("#head_wifi_status").attr("title",jQuery.i18n.prop("wifi_title"));
+	$("#head_dial_status").attr("title",jQuery.i18n.prop("dial_title"));
+	$("#head_sms_status").attr("title",jQuery.i18n.prop("sms_title"));
+	$("#Logout_l").val(jQuery.i18n.prop("Logout_l"));
+	$("#checkpackage").text(jQuery.i18n.prop("checkpackage"));
+	$("#flushpackage").text(jQuery.i18n.prop("flushpackage"));
+	$("#maxmassageinput").text(jQuery.i18n.prop("maxmassageinput"));
+}
+
+// 加载主页内容页面
+function loadMainProperties(){
+	i18('Home_l');
+	$("#main_network_info").text(jQuery.i18n.prop("NetworkInfo_l"));
+	$("#main_dail_status").text(jQuery.i18n.prop("DialStatus_l"));
+	$("#main_network_standard").text(jQuery.i18n.prop("NetworkStandard_l"));
+	$("#main_operator_name").text(jQuery.i18n.prop("OperatorName_l"));
+	$("#mian_bandwidth").text(jQuery.i18n.prop("Bandwidth_l"));
+	$("#main_up_speed").text(jQuery.i18n.prop("UpSpeed_l"));
+	$("#main_down_speed").text(jQuery.i18n.prop("DownSpeed_l"));
+	$("#main_system_info").text(jQuery.i18n.prop("SystemInfo_l"));
+	$("#main_total_memory").text(jQuery.i18n.prop("TotalMemory_l"));
+	$("#main_cpu_usage").text(jQuery.i18n.prop("CpuUsage_l"));
+	$("#main_memory_max_usage").text(jQuery.i18n.prop("MemoryMaxUsage_l"));
+	$("#main_cpu_max_usage").text(jQuery.i18n.prop("CpuMaxUsage_l"));
+	$("#main_memory_min_usage").text(jQuery.i18n.prop("MemoryMinUsage_l"));
+	$("#main_cpu_min_usage").text(jQuery.i18n.prop("CpuMinUsage_l"));
+	$("#main_used_memory").text(jQuery.i18n.prop("UsedMemory_l"));
+	$("#main_network_time").text(jQuery.i18n.prop("UsedNetworkTime_l"));
+	$("#main_start_system_time").text(jQuery.i18n.prop("SystemStartTime_l"));
+	$("#mian_device_info").text(jQuery.i18n.prop("DeviceInfo_l"));
+	$("#main_type").text(jQuery.i18n.prop("DeviceType_l"));
+	$("#main_version").text(jQuery.i18n.prop("DeviceVersion_l"));
+	$("#main_wifi_info").text(jQuery.i18n.prop("Wifi_info_l"));
+	$("#main_wifi_switch_l").text(jQuery.i18n.prop("WLAN_Switch_l"));
+	$("#main_wifi_broadcast_l").text(jQuery.i18n.prop("SSID_Radio_broadcast"));
+	$("#main_wifi_pwd_l").text(jQuery.i18n.prop("SSID_Password"));
+	$("#main_wifi_type_l").text(jQuery.i18n.prop("SSID_Type"));
+	$("#main_wifi_mode_l").text(jQuery.i18n.prop("SSID_Mode"));
+	$("#main_wifi_80211mode_l").text(jQuery.i18n.prop("80211_mode_l"));
+	$("#main_wifi_channel_l").text(jQuery.i18n.prop("WLAN_channel_l"));
+	$("#main_wifi_connect_l").text(jQuery.i18n.prop("Max_connect_num_l"));
+	$("#main_wifi_bandwidth_l").text(jQuery.i18n.prop("WLAN_Bandwidth_l"));
+	$("#main_wifi_ssid_name").text(jQuery.i18n.prop("SSID_Name"));
+	$("#main_hardware_version").text(jQuery.i18n.prop("Text_hardware_version"));
+	$("#main_meid_number").text(jQuery.i18n.prop("main_meid_number"));
+	$("#main_wifi_mac_l").text(jQuery.i18n.prop("main_wifi_mac_l"));
+	$("#Text_gateway_l").text(jQuery.i18n.prop("Text_gateway_l"));
+	$("#Text_netmask_l").text(jQuery.i18n.prop("Text_netmask_l"));
+}
+
+// Acount页面
+function loadAccountProperties(){
+	i18('UpdatePasswordComfirm'); 
+	i18('Account_l');
+	i18('SessionTimeout_l');
+	i18('OldPassword_l');
+	i18('NewPassword_l');
+	i18('ConfirmPassword_l');
+	$("#BTN_UpdateTime").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#BTN_UpdatePWD").val(jQuery.i18n.prop("UpdateBtn"));
+	i18('RefreshTime_l');
+	$("#BTN_Refreshtime").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#ChangeProtocol_l").text(jQuery.i18n.prop("ChangeProtocol_l"));
+	$("#protocol_http").text(jQuery.i18n.prop("protocol_http"));
+	$("#protocol_https").text(jQuery.i18n.prop("protocol_https"));
+	$("#BTN_ChnageProtocol").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#ChangeProtocol_port_l").text(jQuery.i18n.prop("ChangeProtocol_port_l"));
+	$("#ChangeProtocolComfirm").text(jQuery.i18n.prop("ChangeProtocolComfirm"));
+}
+
+// 流量统计
+function loadTrafficProperties(){  
+	$("#Traffic_l").text(jQuery.i18n.prop("DeviceInfo_l"));
+	$("#flux_APN_l").text(jQuery.i18n.prop("APN_flux_L"));
+	$("#device_list_info_l").text(jQuery.i18n.prop("device_list_info_l"));
+	$("#APN_list_l").text(jQuery.i18n.prop("APN_list_l"));
+	$("#BTN_ApnModeUpdate").val(jQuery.i18n.prop("UpdateBtn"));  
+	$("#BTN_LANModeUpdate").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#tx_p").text(jQuery.i18n.prop("tx_p_l"));
+	$("#tx_e").text(jQuery.i18n.prop("tx_e_l"));
+	$("#tx_d").text(jQuery.i18n.prop("tx_d_l"));
+	$("#tx_o").text(jQuery.i18n.prop("tx_o_l"));
+	$("#tx_b").text(jQuery.i18n.prop("tx_b_l"));
+	$("#rx_p").text(jQuery.i18n.prop("rx_p_l"));
+	$("#rx_e").text(jQuery.i18n.prop("rx_e_l"));
+	$("#rx_d").text(jQuery.i18n.prop("rx_d_l"));
+	$("#rx_o").text(jQuery.i18n.prop("rx_o_l"));
+	$("#rx_b").text(jQuery.i18n.prop("rx_b_l"));
+	$("#lan_tx_p").text(jQuery.i18n.prop("tx_p_l"));
+	$("#lan_tx_e").text(jQuery.i18n.prop("tx_e_l"));
+	$("#lan_tx_d").text(jQuery.i18n.prop("tx_d_l"));
+	$("#lan_tx_o").text(jQuery.i18n.prop("tx_o_l"));
+	$("#lan_tx_b").text(jQuery.i18n.prop("tx_b_l"));
+	$("#lan_rx_p").text(jQuery.i18n.prop("rx_p_l"));
+	$("#lan_rx_e").text(jQuery.i18n.prop("rx_e_l"));
+	$("#lan_rx_d").text(jQuery.i18n.prop("rx_d_l"));
+	$("#lan_rx_o").text(jQuery.i18n.prop("rx_o_l"));
+	$("#lan_rx_b").text(jQuery.i18n.prop("rx_b_l"));
+	$("#wlan_tx_p").text(jQuery.i18n.prop("tx_p_l"));
+	$("#wlan_tx_e").text(jQuery.i18n.prop("tx_e_l"));
+	$("#wlan_tx_d").text(jQuery.i18n.prop("tx_d_l"));
+	$("#wlan_tx_o").text(jQuery.i18n.prop("tx_o_l"));
+	$("#wlan_tx_b").text(jQuery.i18n.prop("tx_b_l"));
+	$("#wlan_rx_p").text(jQuery.i18n.prop("rx_p_l"));
+	$("#wlan_rx_e").text(jQuery.i18n.prop("rx_e_l"));
+	$("#wlan_rx_d").text(jQuery.i18n.prop("rx_d_l"));
+	$("#wlan_rx_o").text(jQuery.i18n.prop("rx_o_l"));
+	$("#wlan_rx_b").text(jQuery.i18n.prop("rx_b_l"));
+	$("#device_name_l").text(jQuery.i18n.prop("device_name_l"));
+	$("#leasetime_l").text(jQuery.i18n.prop("leasetime_l"));
+	$("#connected_type_l").text(jQuery.i18n.prop("connected_type_l"));
+	$("#BTN_WLANFluxUpdate").val(jQuery.i18n.prop("UpdateBtn"))
+}
+
+//WLAN设置页面
+function loadWLANSettingProperties(){
+	i18('WLAN_l');
+	$("#WLAN_Base_Setting_l").text(jQuery.i18n.prop("WLAN_Base_Setting_l"));
+	$("#WLAN_Switch_l").text(jQuery.i18n.prop("WLAN_Switch_l"));
+	$("#WLAN_Enable_l").text(jQuery.i18n.prop("Enable_l"));
+	$("#WLAN_Disable_l").text(jQuery.i18n.prop("Disable_l"));
+	$("#SSID_Password").text(jQuery.i18n.prop("SSID_Password")); 
+	$("#SSID_Mode").text(jQuery.i18n.prop("SSID_Mode"));
+	$("#SSID_Type").text(jQuery.i18n.prop("SSID_Type")); 
+	$("#wep_auth_l").text(jQuery.i18n.prop("wep_auth_l")); 
+	$("#SSID_Radio_broadcast").text(jQuery.i18n.prop("SSID_Radio_broadcast"));
+	$("#WLAN_Enable_l").text(jQuery.i18n.prop("Enable_l"));
+	$("#WLAN_Disable_l").text(jQuery.i18n.prop("Disable_l"));
+	$("#Broadcast_Enable_l").text(jQuery.i18n.prop("Enable_l"));
+	$("#Broadcast_Disable_l").text(jQuery.i18n.prop("Disable_l"));
+	$("#BTN_WLANSet").val(jQuery.i18n.prop("ApplyBtn"));
+	$("#WLAN_Advance_Setting_l").text(jQuery.i18n.prop("WLAN_Advance_Setting_l"));
+	$("#80211_mode_l").text(jQuery.i18n.prop("80211_mode_l"));
+	$("#WLAN_channel_l").text(jQuery.i18n.prop("WLAN_channel_l"));
+	$("#Channel_auto_l").text(jQuery.i18n.prop("auto_l"));
+	$("#Max_connect_num_l").text(jQuery.i18n.prop("Max_connect_num_l"));
+	$("#WLAN_Bandwidth_l").text(jQuery.i18n.prop("WLAN_Bandwidth_l"));
+	$("#Text_SSID_l").text(jQuery.i18n.prop("SSID_Name"));	
+}
+
+// APN页面
+function loadApnProperties(){
+	$("#APN_profile_page_l").text(jQuery.i18n.prop("APN_Settings_l"));
+	$("#apn_profile_list_l").text(jQuery.i18n.prop("apn_profile_list_l"));
+	$("#th_profile_name").text(jQuery.i18n.prop("th_profile_name"));
+	$("#th_profile_apn").text(jQuery.i18n.prop("th_profile_apn"));
+	$("#th_profile_protocol").text(jQuery.i18n.prop("th_profile_protocol"));
+	$("#th_profile_authtype").text(jQuery.i18n.prop("th_profile_authtype"));
+	$("#th_profile_username").text(jQuery.i18n.prop("th_profile_username"));
+	$("#th_profile_password").text(jQuery.i18n.prop("th_profile_password"));
+	$("#th_profile_selected").text(jQuery.i18n.prop("th_profile_selected"));
+	$("#th_profile_operate").text(jQuery.i18n.prop("th_profile_operate"));
+	$("#BTN_OpenAddProfileData").val(jQuery.i18n.prop("Add"));
+	$("#BTN_AddProfileData").val(jQuery.i18n.prop("BTN_OK"));
+	$("#BTN_EditProfileData").val(jQuery.i18n.prop("BTN_OK"));
+	$("#profile_data_name_l").text(jQuery.i18n.prop("th_profile_name"));
+	$("#profile_data_apn_l").text(jQuery.i18n.prop("th_profile_apn"));
+	$("#profile_data_protocol_l").text(jQuery.i18n.prop("th_profile_protocol"));
+	$("#profile_data_authtype_l").text(jQuery.i18n.prop("th_profile_authtype"));
+	$("#profile_data_username_l").text(jQuery.i18n.prop("th_profile_username"));
+	$("#profile_data_password_l").text(jQuery.i18n.prop("th_profile_password"));
+	$("#BTN_DelProfileData").val(jQuery.i18n.prop("BTN_OK"));
+	$("#BTN_CancleDelProfileData").val(jQuery.i18n.prop("Cancle"));  
+	$("#BTN_CancleProfileData").val(jQuery.i18n.prop("Cancle"));  
+	$("#active_profile_data_l").text(jQuery.i18n.prop("ActiveProfileData_l")); 
+	$("#BTN_ActiveProfile").val(jQuery.i18n.prop("ApplyBtn"));
+	$("#btn_apn_list").val(jQuery.i18n.prop("btn_view_apn_list"));
+	$("#profile_data_mac_l").text(jQuery.i18n.prop("profile_data_mac_l"));
+	$("#profile_data_active_l").text(jQuery.i18n.prop("profile_data_active_l"));
+	$("#profile_data_gw_l").text(jQuery.i18n.prop("profile_data_gw_l"));
+	$("#th_Gateway_Enable").text(jQuery.i18n.prop("th_Gateway_Enable"));
+	$("#th_Manage_Interface").text(jQuery.i18n.prop("th_Manage_Interface"));
+	$("#th_Mac_Bind").text(jQuery.i18n.prop("th_Mac_Bind"));
+}
+
+
+// USSD页面
+function loadUssdProperties(){
+    $("#uusd_page_l").text(jQuery.i18n.prop("UUSD_Title_l"));
+    $("#ussd_cmd_l").text(jQuery.i18n.prop("ussd_cmd_l"));
+    $("#ussd_send").val(jQuery.i18n.prop("ussd_request"));
+    $("#ussd_answer_l").text(jQuery.i18n.prop("ussd_answer_l"));
+    $("#ussd_answer").val(jQuery.i18n.prop("ussd_answer"));
+    $("#ussd_cancel").val(jQuery.i18n.prop("ussd_cancel"));
+    $("#ussd_response_l").text(jQuery.i18n.prop("ussd_response_l"));
+	$("#balance_enquiry_panel_l").text(jQuery.i18n.prop("balance_enquiry_panel"));
+	$("#balance_enquiry_descript").text(jQuery.i18n.prop("balance_enquiry_descript"));
+	$("#BTN_ussd_balance_enquiry").val(jQuery.i18n.prop("BTN_ussd_balance_enquiry"));
+	$("#recharge_panel_l").text(jQuery.i18n.prop("recharge_panel"));
+	$("#recharge_descript").text(jQuery.i18n.prop("recharge_descript"));
+	$("#BTN_ussd_recharge").val(jQuery.i18n.prop("BTN_ussd_recharge"));
+	$("#custom_panel_l").text(jQuery.i18n.prop("custom_panel"));
+	$("#custom_descript").text(jQuery.i18n.prop("custom_descript"));
+	$("#BTN_ussd_custom").val(jQuery.i18n.prop("BTN_ussd_custom"));
+	$("#custom_sub_descript").text(jQuery.i18n.prop("custom_sub_descript"));
+	$("#BTN_ussd_custom_answer").val(jQuery.i18n.prop("BTN_ussd_custom_answer"));
+
+}
+
+
+// 系统页面
+function loadSystemProperties(){
+	i18('System_l');
+	$("#Factoryback_panel_l").text(jQuery.i18n.prop("Factoryback_panel_l")); 
+	$("#restore_factory_l").text(jQuery.i18n.prop("restore_factory_l")); 
+	$("#system_reboot_l").text(jQuery.i18n.prop("system_reboot_l")); 
+	$("#BTN_Factoryback").val(jQuery.i18n.prop("Btn_recovery_l")); 
+	$("#BTN_Systemreboot").val(jQuery.i18n.prop("Btn_restart_l")); 
+	$("#system_time_setting").text(jQuery.i18n.prop("system_time_setting"));
+	$("#system_time_l").text(jQuery.i18n.prop("system_time_l"));
+	$("#current_system_time_l").text(jQuery.i18n.prop("current_system_time_l"));
+	$("#update_system_time_l").text(jQuery.i18n.prop("update_system_time_l"));
+	$("#BTN_update_system_time").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#BTN_update_ntp_server").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#BTN_update_dst").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#time_zone_l").text(jQuery.i18n.prop("time_zone_l"));
+	$("#dst_switch_l").text(jQuery.i18n.prop("dst_switch_l"));
+	$("#dst_status_disable").text(jQuery.i18n.prop("dst_status_disable"));
+	$("#dst_status_enable").text(jQuery.i18n.prop("dst_status_enable"));
+	$("#Dst_start_time").text(jQuery.i18n.prop("Dst_start_time"));
+	$("#Dst_end_time").text(jQuery.i18n.prop("Dst_end_time"));
+	$("#ntp_server_l").text(jQuery.i18n.prop("ntp_server_l"));
+	$("#s_month").text(jQuery.i18n.prop("month"));
+	$("#s_day").text(jQuery.i18n.prop("day"));
+	$("#s_hour").text(jQuery.i18n.prop("hour"));
+	$("#s_minute").text(jQuery.i18n.prop("minute"));
+	$("#s_second").text(jQuery.i18n.prop("second"));
+	$("#e_month").text(jQuery.i18n.prop("month"));
+	$("#e_day").text(jQuery.i18n.prop("day"));
+	$("#e_hour").text(jQuery.i18n.prop("hour"));
+	$("#e_minute").text(jQuery.i18n.prop("minute"));
+	$("#e_second").text(jQuery.i18n.prop("second"));
+	$("#Text_NTP_l").text(jQuery.i18n.prop("Text_NTP_l"));
+	$("#Text_DST_l").text(jQuery.i18n.prop("Text_DST_l"));
+    $("#TR069_panel_l").text(jQuery.i18n.prop("TR069_panel_l"));
+    $("#acs_url_l").text(jQuery.i18n.prop("acs_url_l"));
+    $("#acs_username_l").text(jQuery.i18n.prop("acs_username_l"));
+    $("#acs_password_l").text(jQuery.i18n.prop("acs_password_l"));
+    $("#cpe_username_l").text(jQuery.i18n.prop("cpe_username_l"));
+    $("#cpe_password_l").text(jQuery.i18n.prop("cpe_password_l"));
+    $("#periodic_inform_interval_l").text(jQuery.i18n.prop("periodic_inform_interval_l"));
+
+	$("#user_settings_backup_l").text(jQuery.i18n.prop("user_settings_backup_l"));
+	$("#BTN_User_Settings_Backup").val(jQuery.i18n.prop("BTN_User_Settings_Backup"));
+	$("#UserData_panel_l").text(jQuery.i18n.prop("UserData_panel"));
+	$("#cfg_file_label").text(jQuery.i18n.prop("cfg_file_label"));
+	$("#cfg_file_upload").val(jQuery.i18n.prop("cfg_file_upload"));
+
+}
+
+// 升级页面
+function loadUpgradeProperties(){
+	$("#upgrade_page_l").text(jQuery.i18n.prop("upgrade_page_l")); 
+	$("#BTN_queryPackage").val(jQuery.i18n.prop("queryPackageBtn")); 
+	$("#BTN_downloadPackage").val(jQuery.i18n.prop("downloadPackage")); 
+	$("#BTN_applyPackage").val(jQuery.i18n.prop("applyPackage")); 
+	$("#local_file_upload").val(jQuery.i18n.prop("local_file_upload")); 
+	$("#local_file_apply").val(jQuery.i18n.prop("local_file_apply")); 
+	$("#file_label").text(jQuery.i18n.prop("file_label"));
+	$("#local_update_l").text(jQuery.i18n.prop("local_update_l")); 
+	$("#online_update_l").text(jQuery.i18n.prop("online_update_l"));  
+}
+
+//网络设置
+function loadNetworkSettingProperties(){
+	$("#Network_page_head_l").text(jQuery.i18n.prop("Network_page_head_l")); 
+	$("#network_conn_panel_l").text(jQuery.i18n.prop("network_conn_panel_l")); 
+	$("#network_auto_conn_switch_l").text(jQuery.i18n.prop("network_auto_conn_switch_l")); 
+	$("#auto_conn_disable").text(jQuery.i18n.prop("auto_conn_disable")); 
+	$("#auto_conn_enable").text(jQuery.i18n.prop("auto_conn_enable"));
+	$("#BTN_set_network_conn_switch").val(jQuery.i18n.prop("UpdateBtn")); 
+	$("#BTN_network_connect").val(jQuery.i18n.prop("BTN_connect")); 
+	$("#BTN_network_disconnect").val(jQuery.i18n.prop("BTN_disconnect")); 
+	$("#network_conn_status_l").text(jQuery.i18n.prop("network_conn_status_l"));
+	$("#network_pin_panel_l").text(jQuery.i18n.prop("network_pin_panel_l")); 
+	$("#pin_status_l").text(jQuery.i18n.prop("pin_status_l"));
+	$("#pin_retry_l").text(jQuery.i18n.prop("pin_retry_l"));
+	$("#puk_retry_l").text(jQuery.i18n.prop("puk_retry_l"));
+	$("#pin_switch_l").text(jQuery.i18n.prop("pin_switch_l"));
+	$("#pin_disable").text(jQuery.i18n.prop("pin_disable"));
+	$("#pin_enable").text(jQuery.i18n.prop("pin_enable"));
+	$("#BTN_update_pin_switch").val(jQuery.i18n.prop("ApplyBtn"));
+	$("#switch_pin_l").text(jQuery.i18n.prop("pin_code"));
+	$("#unlock_pin_l").text(jQuery.i18n.prop("pin_code"));
+	$("#BTN_unlock_pin").val(jQuery.i18n.prop("BTN_unlock_pin"));
+	$("#unlock_puk_l").text(jQuery.i18n.prop("puk_code"));
+	$("#BTN_unlock_puk").val(jQuery.i18n.prop("BTN_unlock_puk"));
+	$("#update_pin_l").text(jQuery.i18n.prop("update_pin_l"));
+	$("#BTN_update_pin").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#update_pin_switch_l").text(jQuery.i18n.prop("update_pin_switch_l"));
+	$("#old_pin_code_l").text(jQuery.i18n.prop("old_pin_code_l"));
+	$("#new_pin_code_l").text(jQuery.i18n.prop("new_pin_code_l"));
+	$("#unlock_puk_pin_l").text(jQuery.i18n.prop("new_pin_code_l"));
+	$("#unlock_pin_label").text(jQuery.i18n.prop("pin_code"));
+	$("#unlock_puk_label").text(jQuery.i18n.prop("puk_code"));
+	$("#lock_operator_panel_l").text(jQuery.i18n.prop("lock_operator_panel_l"));
+	$("#current_sim_lock_operater_l").text(jQuery.i18n.prop("current_sim_lock_operater_l"));
+	$("#BTN_sim_lock").val(jQuery.i18n.prop("lock_sim_l"));
+	$("#BTN_sim_unlock").val(jQuery.i18n.prop("unlock_sim_l"));
+	$("#unlock_sim_l").text(jQuery.i18n.prop("unlock_sim_setting_l")); 
+	$("#lock_sim_l").text(jQuery.i18n.prop("lock_sim_setting_l"));
+	$("#lock_band_panel_l").text(jQuery.i18n.prop("lock_band_panel_l"));
+	$("#support_band_list_l").text(jQuery.i18n.prop("support_band_list_l"));
+	$("#BTN_lock_band").val(jQuery.i18n.prop("BTN_lock_band"));
+	$("#lock_cell_panel_l").text(jQuery.i18n.prop("lock_cell_panel_l"));
+	$("#lock_cell_l").text(jQuery.i18n.prop("lock_cell_panel_l"));
+	$("#pci_l").text(jQuery.i18n.prop("pci_l"));
+	$("#earfcn_l").text(jQuery.i18n.prop("earfcn_l"));
+	$("#un_lock_cell_l").text(jQuery.i18n.prop("un_lock_cell_l")); 
+	$("#BTN_lock_cell").val(jQuery.i18n.prop("BTN_lock_cell"));
+	$("#BTN_unlock_cell").val(jQuery.i18n.prop("BTN_unlock_cell"));
+	$("#current_lock_cell_list_l").text(jQuery.i18n.prop("current_lock_cell_list_l"));
+	$("#th_pci_l").text(jQuery.i18n.prop("pci_l"));
+	$("#th_earfcn_l").text(jQuery.i18n.prop("earfcn_l"));
+	$("#BTN_add_cell").val(jQuery.i18n.prop("Add"));
+	$("#BTN_sim_add").val(jQuery.i18n.prop("Add"));
+	$("#prep_sim_lock_operater").text(jQuery.i18n.prop("prep_sim_lock_operater"));
+	$("#AddCellLockComfirm").text(jQuery.i18n.prop("AddCellLockComfirm"));
+	$("#AddOperatorLockComfirm").text(jQuery.i18n.prop("AddOperatorLockComfirm"));
+	$("#network_mode_l").text(jQuery.i18n.prop("network_mode_l"));
+	$("#network_mode_select_l").text(jQuery.i18n.prop("network_mode_select_l"));
+	$("#btn_network_mode").val(jQuery.i18n.prop("btn_network_mode"));
+	$("#network_mode_active_l").text(jQuery.i18n.prop("network_mode_active_l"));
+	$("#static_route_dev_name_l").text(jQuery.i18n.prop("static_route_dev_name_l"));
+	$("#static_route_dest_ip_l").text(jQuery.i18n.prop("static_route_dest_ip_l"));
+	$("#static_route_netmask_l").text(jQuery.i18n.prop("static_route_netmask_l"));
+	$("#static_route_gw_ip_l").text(jQuery.i18n.prop("static_route_gw_ip_l"));
+	$("#static_route_operate_l").text(jQuery.i18n.prop("static_route_operate_l"));
+	$("#static_route_dev_name_th").text(jQuery.i18n.prop("static_route_dev_name_l"));
+	$("#static_route_dest_ip_th").text(jQuery.i18n.prop("static_route_dest_ip_l"));
+	$("#static_route_netmask_th").text(jQuery.i18n.prop("static_route_netmask_l"));
+	$("#static_route_gw_ip_th").text(jQuery.i18n.prop("static_route_gw_ip_l"));
+	$("#static_route_operate_th").text(jQuery.i18n.prop("static_route_operate_l"));	
+	$("#BTN_add_static_route").val(jQuery.i18n.prop("btn_static_route_add"));
+	$("#BTN_add").val(jQuery.i18n.prop("btn_static_route_add"));
+	$("#BTN_update").val(jQuery.i18n.prop("btn_static_route_update"));
+	$("#BTN_cancel").val(jQuery.i18n.prop("btn_static_route_cancel"));
+	$("#Select_Network_nat").text(jQuery.i18n.prop("Select_Network_nat"));
+	$("#Select_Network_bridge").text(jQuery.i18n.prop("Select_Network_bridge"));
+	$("#Select_Network_router").text(jQuery.i18n.prop("Select_Network_router"));
+}
+
+
+// 网络诊断页面
+function loadDiagnosticsProperties(){
+	$("#Diagnostics_page_head_l").text(jQuery.i18n.prop("Diagnostics_page_head_l"));
+	$("#TracePing_l").text(jQuery.i18n.prop("TracePing_l"));
+	$("#TraceRoute_l").text(jQuery.i18n.prop("TraceRoute_l"));
+	$("#Diagnostics_State").text(jQuery.i18n.prop("Diagnostics_State"));
+	$("#Target_Host").text(jQuery.i18n.prop("Target_Host"));
+	$("#Ping_Count").text(jQuery.i18n.prop("Ping_Count"));
+	$("#Ping_Requested").text(jQuery.i18n.prop("Ping_Requested"));
+	$("#Packet_Size").text(jQuery.i18n.prop("Packet_Size"));
+	$("#Ping_Timeout").text(jQuery.i18n.prop("Ping_Timeout"));
+	$("#BTN_Ping_Diagnostics").val(jQuery.i18n.prop("BTN_Ping_Diagnostics"));
+	$("#ping_context").text(jQuery.i18n.prop("ping_context"));
+	$("#Success_Count").text(jQuery.i18n.prop("Success_Count"));
+	$("#Failure_Count").text(jQuery.i18n.prop("Failure_Count"));
+	$("#Average_ResponseTime").text(jQuery.i18n.prop("Average_ResponseTime"));
+	$("#Minimum_ResponseTime").text(jQuery.i18n.prop("Minimum_ResponseTime"));
+	$("#Maximum_ResponseTime").text(jQuery.i18n.prop("Maximum_ResponseTime"));
+	$("#Diagnostics_Route_State").text(jQuery.i18n.prop("Diagnostics_State"));
+	$("#Route_Requested").text(jQuery.i18n.prop("Route_Requested"));
+	$("#Route_Target_Host").text(jQuery.i18n.prop("Route_Target_Host"));
+	$("#Probes_Number").text(jQuery.i18n.prop("Probes_Number"));
+	$("#Maximum_Hops").text(jQuery.i18n.prop("Maximum_Hops"));
+	$("#Route_Timeout").text(jQuery.i18n.prop("Route_Timeout"));
+	$("#BTN_Route_Diagnostics").val(jQuery.i18n.prop("BTN_Route_Diagnostics"));
+	$("#Diagnostics_Result").text(jQuery.i18n.prop("Diagnostics_Result"));
+	$("#Route_Packet_size").text(jQuery.i18n.prop("Packet_Size"));
+	$("#ping_result_status").text(jQuery.i18n.prop("Diagnostics_State"));
+	$("#Route_result_status").text(jQuery.i18n.prop("Diagnostics_Route_State"));
+	$("#Route_result").text(jQuery.i18n.prop("Diagnostics_Result"));
+}
+
+// WWANP页面
+function loadWWANProperties(){
+	$("#WWAN_Page_l").text(jQuery.i18n.prop("WWAN_Page_l"));
+	$("#gateway_ip").text(jQuery.i18n.prop("gateway_ip"));
+	$("#subnet_mask").text(jQuery.i18n.prop("subnet_mask"));
+	$("#dhcp_switch").text(jQuery.i18n.prop("dhcp_switch"));
+	$("#dhcp_start_ip").text(jQuery.i18n.prop("dhcp_start_ip"));
+	$("#dhcp_end_ip").text(jQuery.i18n.prop("dhcp_end_ip"));
+	$("#dhcp_lease_time").text(jQuery.i18n.prop("dhcp_lease_time"));
+	$("#BTN_set_dhcp").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#dhcp_enable").text(jQuery.i18n.prop("dhcp_enable"));
+	$("#dchp_disable").text(jQuery.i18n.prop("dchp_disable"));
+}
+
+// 安全设置页面
+function loadSecurityProperties(){
+	$("#security_page_l").text(jQuery.i18n.prop("security_page_l"));
+	$("#firewall_panel_l").text(jQuery.i18n.prop("firewall_panel_l"));
+	$("#nat_panel_l").text(jQuery.i18n.prop("nat_panel_l"));
+	$("#firewall_switch_l").text(jQuery.i18n.prop("firewall_switch_l"));
+	$("#firewall_enable").text(jQuery.i18n.prop("firewall_enable"));
+	$("#firewall_disable").text(jQuery.i18n.prop("firewall_disable"));
+	$("#firewall_access_mode_l").text(jQuery.i18n.prop("firewall_access_mode_l"));
+	$("#accesse_mode_deny").text(jQuery.i18n.prop("accesse_mode_deny"));
+	$("#accesse_mode_allow").text(jQuery.i18n.prop("accesse_mode_allow"));
+	$("#BTN_update_firewall_switch").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#BTN_update_firewall_accessMode").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#BTN_add_ip").val(jQuery.i18n.prop("Add"));
+	$("#BTN_add_mac").val(jQuery.i18n.prop("Add"));
+	$("#BTN_add_url").val(jQuery.i18n.prop("Add"));
+	$("#ip_switch_l").text(jQuery.i18n.prop("ip_switch_l"));
+	$("#mac_switch_l").text(jQuery.i18n.prop("mac_switch_l"));
+	$("#url_switch_l").text(jQuery.i18n.prop("url_switch_l"));
+	$("#ip_enable").text(jQuery.i18n.prop("ip_enable"));
+	$("#ip_disable").text(jQuery.i18n.prop("ip_disable"));
+	$("#mac_enable").text(jQuery.i18n.prop("mac_enable"));
+	$("#mac_disable").text(jQuery.i18n.prop("mac_disable"));
+	$("#mac_deny").text(jQuery.i18n.prop("mac_deny"));
+	$("#url_enable").text(jQuery.i18n.prop("url_enable"));
+	$("#url_disable").text(jQuery.i18n.prop("url_disable"));  
+	$("#BTN_update_ip_switch").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#BTN_update_mac_switch").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#BTN_update_url_switch").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#add_ip_protocol_l").text(jQuery.i18n.prop("add_ip_protocol_l"));
+	$("#add_src_ip_l").text(jQuery.i18n.prop("add_src_ip_l"));
+	$("#add_dest_ip_l").text(jQuery.i18n.prop("add_dest_ip_l"));
+	$("#add_src_port_l").text(jQuery.i18n.prop("add_src_port_l"));
+	$("#add_dest_port_l").text(jQuery.i18n.prop("add_dest_port_l"));
+	$("#BTN_cancel_add_ip_filter").val(jQuery.i18n.prop("BTN_Cancle"));
+	$("#BTN_add_ip_filter").val(jQuery.i18n.prop("BTN_OK"));
+	$("#add_mac_l").text(jQuery.i18n.prop("add_mac_l"));
+	$("#BTN_cancel_add_mac_filter").val(jQuery.i18n.prop("BTN_Cancle"));
+	$("#BTN_add_mac_filter").val(jQuery.i18n.prop("BTN_OK"));
+	$("#add_url_l").text(jQuery.i18n.prop("add_url_l"));
+	$("#BTN_cancel_add_url_filter").val(jQuery.i18n.prop("BTN_Cancle"));
+	$("#BTN_add_url_filter").val(jQuery.i18n.prop("BTN_OK"));
+	$("#th_ip_index").text(jQuery.i18n.prop("th_ip_index"));
+	$("#th_ip_protocol").text(jQuery.i18n.prop("th_ip_protocol"));
+	$("#th_ip_src_ip").text(jQuery.i18n.prop("th_ip_src_ip"));
+	$("#th_ip_src_port").text(jQuery.i18n.prop("th_ip_src_port"));
+	$("#th_ip_dest_ip").text(jQuery.i18n.prop("th_ip_dest_ip"));
+	$("#th_ip_dest_port").text(jQuery.i18n.prop("th_ip_dest_port"));
+	$("#th_ip_operate").text(jQuery.i18n.prop("th_ip_operate"));
+	$("#th_mac_index").text(jQuery.i18n.prop("th_mac_index"));
+	$("#th_mac").text(jQuery.i18n.prop("th_mac"));
+	$("#th_mac_operate").text(jQuery.i18n.prop("th_mac_operate"));
+	$("#th_url_index").text(jQuery.i18n.prop("th_url_index"));
+	$("#th_url").text(jQuery.i18n.prop("th_url"));
+	$("#th_url_operate").text(jQuery.i18n.prop("th_url_operate"));
+	$("#th_ip_status").text(jQuery.i18n.prop("fireWAllStatu"));
+	$("#th_mac_status").text(jQuery.i18n.prop("fireWAllStatu"));
+	$("#th_url_status").text(jQuery.i18n.prop("fireWAllStatu"));
+	$("#th_forward_index").text(jQuery.i18n.prop("th_forward_index"));
+	$("#th_forward_protocol").text(jQuery.i18n.prop("th_forward_protocol"));
+	$("#th_forward_remote_port").text(jQuery.i18n.prop("th_forward_remote_port"));
+	$("#th_forward_local_host").text(jQuery.i18n.prop("th_forward_local_host"));
+	$("#th_forward_local_port").text(jQuery.i18n.prop("th_forward_local_port"));
+	$("#th_forward_operate").text(jQuery.i18n.prop("th_forward_operate"));
+	$("#forward_status_l").text(jQuery.i18n.prop("forward_status_l"));
+	$("#BTN_add_forward_filter").val(jQuery.i18n.prop("Add"));
+	$("#add_forward_protocol_l").text(jQuery.i18n.prop("add_forward_protocol_l"));
+	$("#add_remote_port_l").text(jQuery.i18n.prop("add_remote_port_l"));
+	$("#add_local_host_l").text(jQuery.i18n.prop("add_local_host_l"));
+	$("#add_local_port_l").text(jQuery.i18n.prop("add_local_port_l"));
+	$("#BTN_cancel_add_forward").val(jQuery.i18n.prop("BTN_Cancle"));
+	$("#BTN_forward_add").val(jQuery.i18n.prop("BTN_OK"));
+	$("#BTN_cancel_update_ip_filter").val(jQuery.i18n.prop("BTN_Cancle"));
+	$("#BTN_update_ip_filter").val(jQuery.i18n.prop("BTN_OK"));
+	$("#BTN_cancel_update_mac_filter").val(jQuery.i18n.prop("BTN_Cancle"));
+	$("#BTN_update_mac_filter").val(jQuery.i18n.prop("BTN_OK"));
+	$("#BTN_cancel_update_url_filter").val(jQuery.i18n.prop("BTN_Cancle"));
+	$("#BTN_update_url_filter").val(jQuery.i18n.prop("BTN_OK"));
+	$("#update_ip_protocol_l").text(jQuery.i18n.prop("add_ip_protocol_l"));
+	$("#update_src_ip_l").text(jQuery.i18n.prop("add_src_ip_l"));
+	$("#update_dest_ip_l").text(jQuery.i18n.prop("add_dest_ip_l"));
+	$("#update_src_port_l").text(jQuery.i18n.prop("add_src_port_l"));
+	$("#update_dest_port_l").text(jQuery.i18n.prop("add_dest_port_l"));
+	$("#update_mac_l").text(jQuery.i18n.prop("add_mac_l"));
+	$("#update_url_l").text(jQuery.i18n.prop("add_url_l"));
+	$("#network_pin_panel_l").text(jQuery.i18n.prop("network_pin_panel_l")); 
+	$("#pin_status_l").text(jQuery.i18n.prop("pin_status_l"));
+	$("#pin_retry_l").text(jQuery.i18n.prop("pin_retry_l"));
+	$("#puk_retry_l").text(jQuery.i18n.prop("puk_retry_l"));
+	$("#pin_switch_l").text(jQuery.i18n.prop("pin_switch_l"));
+	$("#pin_disable").text(jQuery.i18n.prop("pin_disable"));
+	$("#pin_enable").text(jQuery.i18n.prop("pin_enable"));
+	$("#BTN_update_pin_switch").val(jQuery.i18n.prop("ApplyBtn"));
+	$("#switch_pin_l").text(jQuery.i18n.prop("pin_code"));
+	$("#unlock_pin_l").text(jQuery.i18n.prop("pin_code"));
+	$("#BTN_unlock_pin").val(jQuery.i18n.prop("BTN_unlock_pin"));
+	$("#unlock_puk_l").text(jQuery.i18n.prop("puk_code"));
+	$("#BTN_unlock_puk").val(jQuery.i18n.prop("BTN_unlock_puk"));
+	$("#update_pin_l").text(jQuery.i18n.prop("update_pin_l"));
+	$("#BTN_update_pin").val(jQuery.i18n.prop("UpdateBtn"));
+	$("#update_pin_switch_l").text(jQuery.i18n.prop("update_pin_switch_l"));
+	$("#old_pin_code_l").text(jQuery.i18n.prop("old_pin_code_l"));
+	$("#new_pin_code_l").text(jQuery.i18n.prop("new_pin_code_l"));
+	$("#unlock_puk_pin_l").text(jQuery.i18n.prop("new_pin_code_l"));
+	$("#unlock_pin_label").text(jQuery.i18n.prop("pin_code"));
+	$("#unlock_puk_label").text(jQuery.i18n.prop("puk_code"));
+}
+
+// PLMN页面语言信息加载
+function loadPlmnProperties(){
+	$("#PLMN_Setting_head_l").text(jQuery.i18n.prop("PLMN_Setting_l"));
+	$("#Manual_network_info_l").text(jQuery.i18n.prop("Manual_network_info_l"));
+	$("#BTN_clean_plmn").val(jQuery.i18n.prop("BTN_clean_plmn")); 
+	$("#BTN_add_plmn").val(jQuery.i18n.prop("Add"));
+	$("#BTN_Manual_search_network").val(jQuery.i18n.prop("BTN_Manual_search_network")); 
+	$("#th_plmn_index").text(jQuery.i18n.prop("th_plmn_index"));
+	$("#th_plmn_operator").text(jQuery.i18n.prop("th_plmn_operator"));
+	$("#th_plmn_mcc_mnc").text(jQuery.i18n.prop("th_plmn_mcc_mnc"));
+	$("#th_plmn_radio_tech").text(jQuery.i18n.prop("th_plmn_radio_tech")); 
+	$("#Auto_network_info_l").text(jQuery.i18n.prop("Auto_network_info_l"));
+	$("#Network_mode_l").text(jQuery.i18n.prop("Network_mode_l"));
+	$("#Network_mode_auto").text(jQuery.i18n.prop("Network_mode_auto"));
+	$("#BTN_Auto_search_network").val(jQuery.i18n.prop("BTN_Auto_search_network"));
+	$("#BTN_cancel_add_plmn").val(jQuery.i18n.prop("BTN_Cancle"));
+	$("#BTN_plmn_add").val(jQuery.i18n.prop("BTN_OK"));
+	$("#BTN_cancel_amanual_search_info").val(jQuery.i18n.prop("BTN_Cancle"));
+
+	$("#th_manual_index").text(jQuery.i18n.prop("th_plmn_index"));
+	$("#th_manual_operator").text(jQuery.i18n.prop("th_plmn_operator"));
+	$("#th_manual_mcc_mnc").text(jQuery.i18n.prop("th_plmn_mcc_mnc"));
+	$("#th_manual_status").text(jQuery.i18n.prop("th_plmn_status"));
+	$("#th_manual_radio_tech").text(jQuery.i18n.prop("th_plmn_radio_tech")); 
+	$("#th_manual_operate").text(jQuery.i18n.prop("th_plmn_operate")); 
+
+	$("#dialog_plmn_add").val(jQuery.i18n.prop("btn_dialog_plmn_add"));
+	$("#dialog_plmn_delete").val(jQuery.i18n.prop("btn_dialog_plmn_delete"));
+	$("#AddPlmnInfo").text(jQuery.i18n.prop("AddPlmnInfo"));
+}
+// PLMN页面语言信息加载
+function loadLoginProperties(){
+	$("#BTN_Login").val(jQuery.i18n.prop("Login_l")); 
+	$("#language_list_l").text(jQuery.i18n.prop("language_list_l"));
+}
+
+// 短信页面语言信息加载
+function loadMessageProperties(){
+	$("#Message_head_l").text(jQuery.i18n.prop("Message_head_l"));
+	$("#Message_inbox_l").text(jQuery.i18n.prop("Message_inbox_l"));
+	$("#Message_outbox_l").text(jQuery.i18n.prop("Message_outbox_l"));
+	$("#Message_draftbox_l").text(jQuery.i18n.prop("Message_draftbox_l"));
+
+	//收件箱
+	$("#th_inbox_id").text(jQuery.i18n.prop("th_message_id"));
+	$("#th_inbox_sender").text(jQuery.i18n.prop("th_message_sender"));
+	$("#th_inbox_content").text(jQuery.i18n.prop("th_message_content"));
+	$("#th_inbox_status").text(jQuery.i18n.prop("th_message_status"));
+	$("#th_inbox_time").text(jQuery.i18n.prop("th_message_time"));
+	$("#th_inbox_operate").text(jQuery.i18n.prop("th_message_operate"));
+	$("#btn_inbox_delete").val(jQuery.i18n.prop("btn_message_delete"));
+	$("#btn_intbox_add").val(jQuery.i18n.prop("btn_message_add"));
+	
+	
+	//发件箱
+	$("#th_outbox_id").text(jQuery.i18n.prop("th_message_id"));
+	$("#th_outbox_sender").text(jQuery.i18n.prop("th_message_addressee"));
+	$("#th_outbox_content").text(jQuery.i18n.prop("th_message_content"));
+	$("#th_outbox_time").text(jQuery.i18n.prop("th_message_time"));
+	$("#th_outbox_status").text(jQuery.i18n.prop("th_message_status"));
+	$("#th_outbox_operate").text(jQuery.i18n.prop("th_message_operate"));
+	$("#btn_outbox_delete").val(jQuery.i18n.prop("btn_message_delete"));
+	$("#btn_outbox_add").val(jQuery.i18n.prop("btn_message_add"));
+
+	//草稿箱
+	$("#th_draftbox_id").text(jQuery.i18n.prop("th_message_id"));
+	$("#th_draftbox_sender").text(jQuery.i18n.prop("th_message_addressee"));
+	$("#th_draftbox_content").text(jQuery.i18n.prop("th_message_content"));
+	$("#th_draftbox_time").text(jQuery.i18n.prop("th_message_time"));
+	$("#th_draftbox_status").text(jQuery.i18n.prop("th_message_status"));
+	$("#th_draftbox_operate").text(jQuery.i18n.prop("th_message_operate"));
+	$("#btn_draftbox_delete").val(jQuery.i18n.prop("btn_message_delete"));
+	$("#btn_draftbox_add").val(jQuery.i18n.prop("btn_message_add"));
+
+	$("#Message_addressee_l").text(jQuery.i18n.prop("th_message_addressee"));
+	$("#Message_content_l").text(jQuery.i18n.prop("th_message_content"));
+	$("#btn_message_add").val(jQuery.i18n.prop("btn_message_add"));
+	$("#btn_inbox_refresh").val(jQuery.i18n.prop("btn_message_refresh"));
+	$("#btn_outbox_refresh").val(jQuery.i18n.prop("btn_message_refresh"));
+	$("#btn_draftbox_refresh").val(jQuery.i18n.prop("btn_message_refresh"));
+	$("#BTN_ForwardMessage").val(jQuery.i18n.prop("btn_message_forward"));
+	$("#BTN_SaveMessage").val(jQuery.i18n.prop("btn_message_save"));
+	$("#BTN_SendMessage").val(jQuery.i18n.prop("btn_message_send"));
+	$("#BTN_ReplyMessage").val(jQuery.i18n.prop("btn_message_reply"));
+	$("#BTN_CancleProfileData").val(jQuery.i18n.prop("btn_message_cancle"));
+
+	//短息发送报告
+	$("#message_setting_l").text(jQuery.i18n.prop("message_setting_l"));
+	$("#Text_message_report_close").text(jQuery.i18n.prop("Text_message_report_close"));
+	$("#Text_message_report_open").text(jQuery.i18n.prop("Text_message_report_open"));
+	$("#Test_message_report_l").text(jQuery.i18n.prop("Test_message_report_l"));
+	$("#outbox_message_status_l").text(jQuery.i18n.prop("outbox_message_status_l"));
+
+}

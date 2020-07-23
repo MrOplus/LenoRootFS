@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'MTNBrighterSans';
+  src: url('../../font/MTNBrighterSans-Light.otf');
+}
+
+html{
+    font-family: "MTNBrighterSans","Microsoft YaHei",sans-serif !important;
+    height: 100%;
+    width: 100%;
+  	-webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+input[type = button]{
+    font-family: "MTNBrighterSans","Microsoft YaHei",sans-serif !important;
+}
+
+input[type = sumbit]{
+    font-family: "MTNBrighterSans","Microsoft YaHei",sans-serif !important;
+}
+
+select{
+    font-family: "MTNBrighterSans","Microsoft YaHei",sans-serif !important;
+}
+
+input[type = textarea]{
+    font-family: "MTNBrighterSans","Microsoft YaHei",sans-serif !important;
+}
+
+input[type = text]{
+    font-family: "MTNBrighterSans","Microsoft YaHei",sans-serif !important;
+}
+
+input[type = password]{
+    font-family: "MTNBrighterSans","Microsoft YaHei",sans-serif !important;
+}
+
+.ui-widget{
+	font-family: "MTNBrighterSans","Microsoft YaHei",sans-serif !important;
+}
+
+label{
+	font-family: "MTNBrighterSans","Microsoft YaHei",sans-serif !important;
+}
+h3{
+    font-family: "MTNBrighterSans","Microsoft YaHei",sans-serif !important;
+}
+.btn-select .cur-select{
+	font-family: "MTNBrighterSans","Microsoft YaHei",sans-serif !important;
+}
+
+.btn-select select, .btn_iran{
+	font-family: "MTNBrighterSans","Microsoft YaHei",sans-serif !important;
+}

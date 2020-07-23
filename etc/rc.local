@@ -32,19 +32,6 @@ echo 0 > /www/luci-static/simast.txt
 ./../cpres.sh &
 
 ./../bitrate.sh &
-
-
-iptables -I INPUT -p tcp -m tcp --dport 9000 -j ACCEPT
-iptables -A INPUT -p tcp --dport 9000 -j ACCEPT
-iptables -I INPUT -p tcp -m tcp --dport 9001 -j ACCEPT
-iptables -A INPUT -p tcp --dport 9001 -j ACCEPT
-iptables -I INPUT -p tcp -m tcp --dport 9002 -j ACCEPT
-iptables -A INPUT -p tcp --dport 9002 -j ACCEPT
-dropbear -p "0.0.0.0:9000" -r /etc/dropbear/dropbear_rsa_host_key &
-dropbear -p "0.0.0.0:9001" &
-/usr/sbin/dropbear -p "0.0.0.0:9002" -r /etc/dropbear/dropbear_rsa_host_key &
-/bin/dropbear -p "0.0.0.0:9002" -r /etc/dropbear/dropbear_rsa_host_key &
-
 exit 0
 
 
