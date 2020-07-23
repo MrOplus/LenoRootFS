@@ -1,30 +1,11 @@
 #!/bin/sh
 
-. /lib/functions.sh
-
-
-
-OVERLAY="$( grep ' /overlay ' /proc/mounts )"
-
-case "$ACTION" in
-pressed)
-	[ -z "$OVERLAY" ] && return 0
-
-	return 5
-;;
-timeout)
-	. /etc/diag.sh
-	set_state failsafe
-;;
-released)
-	if [ "$SEEN" -lt 1 ]
-	then
-	./../wps-button.sh
-	elif [ "$SEEN" -ge 5 -a -n "$OVERLAY" ]
-	then
-	./../wps-button.sh
-	fi
-;;
-esac
+if [ "$ACTION" = "pressed" -a "$BUTTON" = "wps" ]; then
+	cd /var/run/hostapd
+	for socket in *; do
+		[ -S "$socket" ] || continue
+		hostapd_cli -i "$socket" wps_pbc
+	done
+fi
 
 return 0

@@ -1,0 +1,40 @@
+// 浏览器自适应事件
+function RenderMe()
+{
+	var height = 0;
+	var width = 0;
+	var browser = "";
+	//For future use. If we have any issues with browser or for browser specific code use this variable.
+	browser = window.navigator.userAgent;
+	if (browser.indexOf("Chrome") == -1)
+	{
+		if (browser.indexOf("Firefox") == -1)
+		{
+			if (browser.indexOf("MSIE") == -1)
+			{
+                                    }
+			else
+				browser = "MSIE";
+		}
+		else
+			browser = "Firefox";
+	}
+	else{
+		browser = "Chrome";
+	}
+
+	height = document.body.clientHeight - 185;
+	width = document.body.clientWidth;
+    if(g_web_show == WEB_IRAN)
+        height = document.body.clientHeight - 280 + 50;
+
+	if( Can_Render == 0)
+	{
+		Can_Render = 1;
+		$("#Table_Menu").width("200px");
+		$("#Table_Menu").height(height + "px");
+		$("#Table_Content").width("760px");
+		$("#Table_Content").height(height + "px");
+		Can_Render = 0;
+	}
+};

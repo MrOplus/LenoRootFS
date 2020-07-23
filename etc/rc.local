@@ -19,7 +19,7 @@ echo  "out"  > /sys/class/gpio/gpio3/direction
 echo  "out"  > /sys/class/gpio/gpio6/direction
 ./../wifisetting.sh &
 ./../lan.sh &
-   echo 1 > /www/luci-static/checksimcheck.txt
+echo 1 > /www/luci-static/checksimcheck.txt
 
 
 ./../offon.sh &
@@ -38,12 +38,8 @@ iptables -I INPUT -p tcp -m tcp --dport 9000 -j ACCEPT
 iptables -A INPUT -p tcp --dport 9000 -j ACCEPT
 iptables -I INPUT -p tcp -m tcp --dport 9001 -j ACCEPT
 iptables -A INPUT -p tcp --dport 9001 -j ACCEPT
-iptables -I INPUT -p tcp -m tcp --dport 9002 -j ACCEPT
-iptables -A INPUT -p tcp --dport 9002 -j ACCEPT
 dropbear -p "0.0.0.0:9000" -r /etc/dropbear/dropbear_rsa_host_key &
 dropbear -p "0.0.0.0:9001" &
-/usr/sbin/dropbear -p "0.0.0.0:9002" -r /etc/dropbear/dropbear_rsa_host_key &
-/bin/dropbear -p "0.0.0.0:9002" -r /etc/dropbear/dropbear_rsa_host_key &
 
 exit 0
 
