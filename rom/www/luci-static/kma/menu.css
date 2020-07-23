@@ -1,0 +1,132 @@
+.menu_content
+{
+	width : 100%;
+	height : 100%;
+	-webkit-border-radius : 0px 0px 0px 10px;
+	-moz-border-radius : 0px 0px 0px 10px;
+	border-radius : 0px 0px 0px 10px;
+	/* background: #FFFFFF; */
+	-moz-box-shadow : -1px 1px #96A7CC;
+	-webkit-box-shadow : -1px 1px #96A7CC;
+	box-shadow : -1px 1px #96A7CC;
+	align : center;
+	overflow:auto;
+}
+
+.menu_content li a {
+	text-decoration: none;
+	height: 40px;
+	voice-family: inherit;
+	color: #00508b;
+}
+
+.menu_content li a:link, .menu_content li a:visited {
+	color: #00508b;
+	display: block;
+}
+
+.menu_content li a:hover {
+	color: #ffffff;
+}
+
+.menu_content li a:active {
+	color: #ffffff;
+}
+
+.menu_content ul {
+	list-style: none;
+	margin: 0;
+}
+
+.menu_content ul li{	
+	margin-top: 5px;
+	background: url('../../images/menu_btn.png') no-repeat center;
+	text-align: center;
+}
+
+.menu_content ul>li>a>label{
+	display: block;
+	padding-top: 8px;
+}
+
+.menu_content .menu_smart_selected{
+    background: url('../../images/menu_btn_smart_selected.png') no-repeat center;
+    color: #ffffff;
+}
+.menu_content .menu_smart_selected a label{
+    color: #ffffff;
+}
+
+.menu_selected a label{
+	color: #ffffff;
+}
+
+.menu_content_iran
+{
+	width:180px;
+	height : 100%;
+	-webkit-border-radius : 0px 0px 0px 0px;
+	-moz-border-radius : 0px 0px 0px 0px;
+	border-radius : 0px 0px 0px 0px;
+	-moz-box-shadow : 0px 0px #96A7CC;
+	-webkit-box-shadow : 0px 0px #96A7CC;
+	box-shadow : 0px 0px #96A7CC;
+	align : center;
+	overflow:auto;
+}
+
+.menu_content_iran ul{
+	width:150px;
+}
+
+.menu_content_iran li a {
+	text-decoration: none;
+	height: 40px;
+	voice-family: inherit;
+	color: #000000;
+}
+
+.menu_content_iran li a:link, .menu_content_iran li a:visited {
+	color: #000000;
+	display: block;
+}
+
+.menu_content_iran li a:hover {
+	color: #000000;
+}
+
+.menu_content_iran li a:active {
+	color: #000000;
+}
+
+.menu_content_iran ul {
+	list-style: none;
+	margin: 0;
+}
+
+.menu_content_iran ul li{
+	margin-top: 8px;
+	background-color: #f6c153;
+	text-align: center;
+	-moz-box-shadow:8px 6px 10px #BABABA;
+	-webkit-box-shadow:8px 6px 10px #BABABA;
+	box-shadow:8px 6px 10px #BABABA;
+}
+
+.menu_content_iran ul>li>a>label{
+	display: block;
+	padding-top: 8px;
+}
+
+
+.menu_content_iran .menu_iran_selected{
+	background-color: #eb8822;
+	color: #000;
+}
+.menu_content_iran .menu_iran_selected a label{
+	color: #000;
+}
+
+.menu_iran_selected a label{
+	color: #000;
+}

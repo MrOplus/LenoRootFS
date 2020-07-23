@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Maintenance</title>
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  
+
+  <!-- Custom styles for this template -->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this page -->
+  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+<style>
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('/luci-static/load.gif') 50% 50% no-repeat #fff;
+	background-size:150px;
+}
+</style>
+<div class="loader"></div>
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/cgi-bin/luci/admin/status/overview">
+        <div class="sidebar-brand-icon rotate-n-15">
+     
+        </div>
+        <div class="sidebar-brand-text mx-3">      <img class="kmalogo" width="70%" src="img/logo.png"><sup></sup></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item ">
+        <a class="nav-link" href="/cgi-bin/luci/admin/status/overview">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Overview</span></a>
+      </li>
+
+      <!-- Divider -->
+
+      <!-- Heading -->
+  
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item ">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cloud"></i>
+          <span>Network</span>
+        </a>
+        <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+      
+            <a class="collapse-item " href="/cgi-bin/luci/admin/status/iptables">Cellular Network</a>
+            <a class="collapse-item" href="/cgi-bin/luci/admin/status/routes">LAN Setting</a>
+            <a class="collapse-item" href="/luci-static/wansetting.html">WAN Setting</a>
+            <a class="collapse-item" href="apnmenegmant.html">APN Management</a>
+            <a class="collapse-item" href="/luci-static/staticroute.html">Static Route</a>
+            <a class="collapse-item" href="/cgi-bin/luci/admin/status/syslog">Network Preferred</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsewifi" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-wifi"></i>
+          <span>Wi-Fi</span>
+        </a>
+        <div id="collapsewifi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="/luci-static/wifistatus.html">Wi-Fi Status</a>
+            <a class="collapse-item" href="/cgi-bin/luci/admin/status/dmesg">Wi-Fi Setting</a>
+           
+          </div>
+        </div>
+      </li>
+	  
+	      <li class="nav-item ">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesecure" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-lock"></i>
+          <span>Security</span>
+        </a>
+        <div id="collapsesecure" class="collapse " aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item " href="macfiltering.html">MAC Filtering</a>
+            <a class="collapse-item" href="/luci-static/portforward.html">Port Forward</a>
+            <a class="collapse-item " href="/luci-static/dmz.html">DMZ</a>
+			  <a class="collapse-item " href="/luci-static/vpn.html">VPN</a>
+          
+          </div>
+        </div>
+      </li>
+	  
+
+	  
+	  	   <li class="nav-item ">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesms" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-sms"></i>
+          <span>SMS</span>
+        </a>
+        <div id="collapsesms" class="collapse " aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item " href="/luci-static/inbox.html">Inbox</a>
+			     <a class="collapse-item " href="/luci-static/outbox.html">Outbox</a>
+			     <a class="collapse-item " href="/luci-static/newmessage.html">New Message</a>
+			     <a class="collapse-item " href="/luci-static/sentmesage.html">Sent Message</a>
+			
+           
+          </div>
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="/luci-static/ussd.html"">
+          <i class="fas fa-fw fa-sign-out-alt"></i>
+          <span>USSD</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/luci-static/webaccess.html">
+          <i class="fas fa-fw fa-sign-out-alt"></i>
+          <span>Firewall</span></a>
+      </li>
+	  
+	     <li class="nav-item active">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesystem" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>System</span>
+        </a>
+        <div id="collapsesystem" class="collapse show" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item active" href="/luci-static/maintenance.html">Maintenance</a>
+            <a class="collapse-item " href="/luci-static/cwmp.html">CWMP (TR-069)</a>
+            <a class="collapse-item" href="/luci-static/date.html">Date & Time</a>
+            <a class="collapse-item" href="/luci-static/diagnostics.html">Diagnostics</a>
+            <a class="collapse-item" href="/luci-static/account.html">Account</a>
+			   
+           
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/cgi-bin/luci/admin/logout">
+          <i class="fas fa-fw fa-sign-out-alt"></i>
+          <span>Logout</span></a>
+      </li>
+      <!-- Divider -->
+
+      <!-- Heading -->
+      
+
+   
+
+      <!-- Nav Item - Charts -->
+     
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+  
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+  <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+<img width="60px" dir="rtl" src="img/logo2.png">
+<img width="70px" dir="rtl" src="img/5g.png">
+<img width="90px" dir="rtl" src="img/modem.png">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+       
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <!-- Nav Item - Alerts -->
+            
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Alerts Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 12, 2019</div>
+                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-success">
+                      <i class="fas fa-donate text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 7, 2019</div>
+                    $290.29 has been deposited into your account!
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 2, 2019</div>
+                    Spending Alert: We've noticed unusually high spending for your account.
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+              </div>
+            </li>
+
+            <!-- Nav Item - Messages -->
+              <!-- Dropdown - Messages -->
+      
+            <!-- Nav Item - User Information -->
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+       
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Maintenance</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <iframe id="iframeflash" src="/cgi-bin/luci/admin/system/flashops" width="100%" height="600px" frameBorder="0"> </iframe>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/datatables-demo.js"></script>
+
+  <script src="/luci-static/jquery-2.2.4.min.js"></script>  
+
+
+<script>                                                                                                                                               
+$(window).load(    function(){                                                                                                                             
+                 $('.loader').fadeOut();                                                                                                                         
+} );                                                                                                                                                    
+     
+  $( "iframe" ).on('load',function() {
+        document.title = document.getElementById("iframeflash").contentDocument.title;
+	
+		if ( document.title == "Login" ) {
+		
+		           var r = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/;                    
+                 var t =  window.location.href.match(r);                                      
+                 window.location.href = "http://"+t;    
+		
+		}
+    });
+
+	 
+</script> 
+</body>
+
+</html>

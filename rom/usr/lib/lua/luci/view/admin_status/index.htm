@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Irancell-Overview</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="/luci-static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template-->
+  <link href="/luci-static/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body onload="firstcheck()" id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+     
+        </div>
+        <div class="sidebar-brand-text mx-3">      <img class="kmalogo" width="70%" src="/luci-static/img/logo.png"><sup></sup></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="/cgi-bin/luci/admin/status/overview">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Overview</span></a>
+      </li>
+
+      <!-- Divider -->
+
+      <!-- Heading -->
+  
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cloud"></i>
+          <span>Network</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+      
+            <a class="collapse-item " href="/cgi-bin/luci/admin/status/iptables">Cellular Network</a>
+            <a class="collapse-item" href="/cgi-bin/luci/admin/status/routes">LAN Setting</a>
+            <a class="collapse-item" href="/luci-static/wansetting.html">WAN Setting</a>
+            <a class="collapse-item" href="/luci-static/apnmenegmant.html">APN Management</a>
+            <a class="collapse-item " href="/luci-static/staticroute.html">Static Route</a>
+            <a class="collapse-item" href="/cgi-bin/luci/admin/status/syslog">Network Preferred</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsewifi" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-wifi"></i>
+          <span>Wi-Fi</span>
+        </a>
+        <div id="collapsewifi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="/luci-static/wifistatus.html">Wi-Fi Status</a>
+            <a class="collapse-item" href="/cgi-bin/luci/admin/status/dmesg">Wi-Fi Setting</a>
+           
+          </div>
+        </div>
+      </li>
+	  
+	      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesecure" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-lock"></i>
+          <span>Security</span>
+        </a>
+        <div id="collapsesecure" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="/luci-static/macfiltering.html">MAC Filtering</a>
+            <a class="collapse-item" href="/luci-static/portforward.html">Port Forward</a>
+            <a class="collapse-item" href="/luci-static/dmz.html">DMZ</a>
+			  <a class="collapse-item " href="/luci-static/vpn.html">VPN</a>
+          
+          </div>
+        </div>
+      </li>
+	  
+	  
+	  	   <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesms" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-sms"></i>
+          <span>SMS</span>
+        </a>
+        <div id="collapsesms" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="/luci-static/inbox.html">Inbox</a>
+			     <a class="collapse-item" href="/luci-static/outbox.html">Outbox</a>
+			     <a class="collapse-item" href="/luci-static/newmessage.html">New Message</a>
+			     <a class="collapse-item" href="/luci-static/sentmesage.html">Sent Message</a>
+			   
+           
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/luci-static/ussd.html"">
+          <i class="fas fa-fw fa-sign-out-alt"></i>
+          <span>USSD</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/luci-static/webaccess.html">
+          <i class="fas fa-fw fa-sign-out-alt"></i>
+          <span>Firewall</span></a>
+      </li>
+	  
+	     <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesystem" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>System</span>
+        </a>
+        <div id="collapsesystem" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="/luci-static/maintenance.html">Maintenance</a>
+            <a class="collapse-item " href="/luci-static/cwmp.html">CWMP (TR-069)</a>
+            <a class="collapse-item" href="/luci-static/date.html">Date & Time</a>
+            <a class="collapse-item" href="/luci-static/diagnostics.html">Diagnostics</a>
+            <a class="collapse-item" href="/luci-static/account.html">Account</a>
+			   
+           
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/cgi-bin/luci/admin/logout">
+          <i class="fas fa-fw fa-sign-out-alt"></i>
+          <span>Logout</span></a>
+      </li>
+      <!-- Divider -->
+
+      <!-- Heading -->
+      
+
+   
+
+      <!-- Nav Item - Charts -->
+     
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+  
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+  <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+<img width="60px" dir="rtl" src="/luci-static/img/logo2.png">
+<img width="70px" dir="rtl" src="/luci-static/img/5g.png">
+<img width="90px" dir="rtl" src="/luci-static/img/modem.png">
+
+          <!-- Topbar Search -->
+       
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <!-- Nav Item - Alerts -->
+            
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Alerts Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 12, 2019</div>
+                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-success">
+                      <i class="fas fa-donate text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 7, 2019</div>
+                    $290.29 has been deposited into your account!
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 2, 2019</div>
+                    Spending Alert: We've noticed unusually high spending for your account.
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+              </div>
+            </li>
+
+            <!-- Nav Item - Messages -->
+              <!-- Dropdown - Messages -->
+
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800"></h1>
+       
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div style="color :#4e73df !important" class="text-xs font-weight-bold text-primary text-uppercase mb-1"><i class="fas fa-wifi "></i> Wi-Fi Settings</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Wi-Fi ON/OFF  </div>
+                    </div>
+                    <div class="col-auto">
+                    <label class="switch">
+  <input id="switch4" type="checkbox" onclick="setTimeout(wifitogglef, 400)" checked>
+  
+  <span class="slider round"></span>
+</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+<style>
+input[switch] {
+  display: none;
+}
+input[switch] + label {
+  font-size: 1em;
+  line-height: 1;
+  width: 4.2rem;
+  height: 2rem;
+  background-color: #ddd;
+  background-image: none;
+  border-radius: 2rem;
+  padding: 0.1666666667rem;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  font-family: inherit;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+input[switch] + label:before {
+  /* Label */
+  text-transform: uppercase;
+  color: #b7b7b7;
+  content: attr(data-off-label);
+  display: block;
+  font-family: inherit;
+  font-family: FontAwesome, inherit;
+  font-weight: 500;
+  font-size: 0.7rem;
+  line-height: 1.74rem;
+  position: absolute;
+  right: 0.2166666667rem;
+  margin: 0.2166666667rem;
+  top: 0;
+  text-align: center;
+  min-width: 1.6666666667rem;
+  overflow: hidden;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+input[switch] + label:after {
+  /* Slider */
+  content: '';
+  position: absolute;
+  left: 0.1666666667rem;
+  background-color: #f7f7f7;
+  box-shadow: none;
+  border-radius: 2rem;
+  height: 1.6666666667rem;
+  width: 1.6666666667rem;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+input[switch]:checked + label {
+  background-color: lightblue;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.2));
+}
+input[switch]:checked + label:before {
+  color: #fff;
+  content: attr(data-on-label);
+  right: auto;
+  left: 0.2166666667rem;
+}
+input[switch]:checked + label:after {
+  left: 2.3666666667rem;
+  background-color: #f7f7f7;
+  box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+input[switch="bool"] + label {
+  background-color: #ffcb05;
+}
+input[switch="bool"] + label:before {
+  color: #fff !important;
+}
+input[switch="bool"]:checked + label {
+  background-color: #2196f3;
+}
+input[switch="bool"]:checked + label:before {
+  color: #fff !important;
+}
+
+input[switch="default"]:checked + label {
+  background-color: #a2a2a2;
+}
+input[switch="default"]:checked + label:before {
+  color: #fff !important;
+}
+
+input[switch="success"]:checked + label {
+  background-color: #BCE954;
+}
+input[switch="success"]:checked + label:before {
+  color: #fff !important;
+}
+
+input[switch="warning"]:checked + label {
+  background-color: gold;
+}
+input[switch="warning"]:checked + label:before {
+  color: #fff !important;
+}
+
+
+
+</style>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Convert LAN/WAN</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Switch Port</div>
+                    </div>
+                    <div class="col-auto">
+        <input type="checkbox" id="switch3" switch="bool"  onclick="setTimeout(lanwanf, 400)" /> 
+     
+  <label for="switch3" data-on-label="Wan" data-off-label="Lan"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Signal Strength</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div id ="darsad" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">inprogress</div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div id="styledarsad" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-signal fa-2x text-red-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">SMS Inbox</div>
+                      <div id="smsinbox" class="h5 mb-0 font-weight-bold text-gray-800">inprogress</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-sms fa-2x text-red-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row -->
+       <div class="row">
+
+            <!-- Area Chart -->
+      
+                <!-- Card Header - Dropdown -->
+             
+                <!-- Card Header - Dropdown -->
+                
+
+          <!-- Content Row -->
+		  
+		           <div class="col-lg-6 mb-4">
+
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Modem Status</h6>
+                </div>
+                <div class="card-body">
+               <style>
+			   .column {
+  float: right;
+  width: 33.33%;
+
+  height: 100px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.roww:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.statuss {
+    margin-left: 25%;
+}
+			   </style>
+			   <div class="roww">
+ 
+  <div class="column" >
+  <img id="lan11" class="statuss" width="40%" src="/luci-static/load.gif">
+
+  </div>
+  <div class="column" >
+    <img id="lan22" class="statuss" width="40%" src="/luci-static/load.gif">
+  </div>
+   <div class="column" >
+   <img id="wifii" class="statuss" width="40%" src="/luci-static/load.gif">
+  </div>
+
+</div>
+			   <div class="roww">
+  <div class="column" >
+   <img id="networkstatt" class="statuss" width="40%" src="/luci-static/load.gif">
+  </div>
+
+      <div class="column" >
+ <img id="netshow" class="statuss" width="40%" src="/luci-static/load.gif">
+  </div>
+    <div class="column" >
+  <img id="simm" class="statuss" width="40%" src="/luci-static/load.gif">
+  </div>
+  
+ 
+
+</div>
+               
+                </div>
+              </div>
+
+           
+
+            </div>
+
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4">
+
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Network Status</h6>
+                </div>
+                <div class="card-body">
+				<style>
+				
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  width: 100%;
+  color:#5a5c69!important;
+    font-weight:bold;
+}
+
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+  color:#5a5c69!important;
+  font-weight:bold;
+}
+
+td {
+    width: 10% !important;
+}
+				
+				</style>
+             <table>
+
+  <tr>
+	  <td>Operator Name : </td>
+      <td id="operatid" >Get Data...</td>
+    </tr>
+	
+    <tr>
+    <td>Type</td>
+    <td id="typenet" >Get Data...</td>
+  
+  </tr>
+  <tr>
+    <td>IPV4</td>
+    <td id="ipv4net" >Get Data...</td>
+
+ 
+  </tr>
+  <tr>
+    <td>IPV6</td>
+    <td id="ipv6net" >Get Data...</td>
+ 
+  </tr>
+  <tr>
+    <td>IMEI</td>
+    <td id="imeinet" >Get Data...</td>
+ 
+  </tr>
+  <tr>
+    <td>IMSI</td>
+    <td id="imsinet"  >Get Data...</td>
+
+  </tr>
+
+
+</table>
+               
+                </div>
+              </div>
+
+
+            </div>
+</div>
+       <div class="row">
+
+            <!-- Area Chart -->
+      
+                <!-- Card Header - Dropdown -->
+             
+                <!-- Card Header - Dropdown -->
+                
+
+          <!-- Content Row -->
+		  
+		           <div class="col-lg-6 mb-4">
+
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Hardware Status</h6>
+                </div>
+                <div class="card-body">
+                  <h4   class="small font-weight-bold">CPU Usage <span id="darsadcpu" class="float-right">25%</span></h4>
+                  <div class="progress mb-4">
+                    <div id="stylecpu" class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+				     <h4 class="small font-weight-bold">Storage Usage <span class="float-right">60%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">RAM Usage <span id="darsadram" class="float-right">42%</span></h4>
+                  <div class="progress mb-4">
+                    <div  id="styleram" class="progress-bar bg-success" role="progressbar" style="width: 42%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+               
+               
+                </div>
+              </div>
+
+           
+
+            </div>
+
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4">
+
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Modem Firmware info</h6>
+                </div>
+                <div class="card-body">
+				<style>
+				
+				
+				
+.ctn {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  min-height: 100%;
+}
+#check {
+  display: none;
+}
+.btn-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00688f;
+  border: none;
+  font-family: 'Raleway', serif;
+  font-size: 30px;
+  color: #fffeee;
+
+  height: 50px;
+  width: 100%;
+  border-radius:5px;
+  
+}
+.btn-text {
+  font-family: 'Raleway', serif;
+  font-size: 20px;
+  color: #fffeee;
+  font-family: Nunito,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+margin-top:15px;
+}
+
+.load {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 5px solid #fff;
+  border-radius: 100%;
+}
+.open {
+  border-top: 5px solid transparent;
+  -webkit-animation: load-animate infinite linear 1s;
+          animation: load-animate infinite linear 1s;
+}
+#check:checked ~ .btn-label > .btn-text {
+  display: none;
+}
+#check:checked ~ .btn-label > .load {
+  display: inline-block;
+}
+@-webkit-keyframes load-animate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+    opacity: 0.35;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes load-animate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+    opacity: 0.35;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+				
+				</style>
+             <table>
+
+  
+    <tr>
+    <td>Modem Model</td>
+    <td  >FD-i40-E1</td>
+  
+  </tr>
+  <tr>
+    <td>Software Version</td>
+    <td >1.3.0</td>
+
+ 
+  </tr>
+  <tr>
+    <td>kernel Version</td>
+    <td>4.18.06.3</td>
+ 
+  </tr>
+
+  <tr>
+    <td>Serial Number</td>
+    <td id="serialtd"  >Get Data...</td>
+
+  </tr>
+
+
+</table>
+               
+                </div>
+              </div>
+
+
+            </div>
+</div>
+
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+
+  
+  <script>
+  
+  
+  //lan/wan toggle alert function END
+  function lanwanf() {
+
+      var ali = document.getElementById("switch3");
+
+      if (ali.checked == true) {
+	  
+	            $.ajax({
+              url: '/luci-static/lantowan.php',
+              success: function(data) {
+                  $('.result').html(data);
+              }
+          });
+
+    
+          let timerInterval
+          Swal.fire({
+                              html: 'The port is switching to WAN',
+     imageUrl: '/luci-static/load.gif',
+	 imageHeight: 150,
+	 width: 400,
+	
+	
+	   showConfirmButton: false,
+                      timer: 9000,
+              onBeforeOpen: () => {
+                 
+                  timerInterval = setInterval(() => {
+                      Swal.getContent().querySelector('strong')
+                          .textContent = Swal.getTimerLeft()
+                  }, 100)
+              },
+              onClose: () => {
+                  clearInterval(timerInterval)
+              }
+          }).then((result) => {
+              if (
+                  /* Read more about handling dismissals below */
+                  result.dismiss === Swal.DismissReason.timer
+              ) {
+                  console.log('I was closed by the timer')
+              }
+          })
+
+      }
+	  
+	  
+	        if (ali.checked == false) {
+	  
+	            $.ajax({
+              url: '/luci-static/wantolan.php',
+              success: function(data) {
+                  $('.result').html(data);
+              }
+          });
+
+      
+          let timerInterval
+          Swal.fire({
+                       html: 'The port is switching to LAN',
+     imageUrl: '/luci-static/load.gif',
+	 imageHeight: 150,
+	 width: 400,
+	
+	
+	   showConfirmButton: false,
+              timer: 9000,
+              onBeforeOpen: () => {
+                  
+                  timerInterval = setInterval(() => {
+                      Swal.getContent().querySelector('strong')
+                          .textContent = Swal.getTimerLeft()
+                  }, 100)
+              },
+              onClose: () => {
+                  clearInterval(timerInterval)
+              }
+          }).then((result) => {
+              if (
+                  /* Read more about handling dismissals below */
+                  result.dismiss === Swal.DismissReason.timer
+              ) {
+                  console.log('I was closed by the timer')
+              }
+          })
+
+      }
+
+  }
+  
+    //lan/wan toggle alert function END
+	
+    //wifi toggle alert function START
+
+  
+  function wifitogglef() {
+      var wifiswitch = document.getElementById("switch4");
+
+      if (wifiswitch.checked == false) {
+	 
+	              document.getElementById("wifii").src = "/luci-static/img/wifinon.png";
+
+          $.ajax({
+              url: '/luci-static/wifitogoff.php',
+              success: function(data) {
+                  $('.result').html(data);
+              }
+          });
+          let timerInterval
+          Swal.fire({
+            html: 'Turning off Wi-Fi',
+     imageUrl: '/luci-static/load.gif',
+	 imageHeight: 150,
+	 width: 400,
+	
+	
+	   showConfirmButton: false,
+              timer: 9000,
+              onBeforeOpen: () => {
+              
+                  timerInterval = setInterval(() => {
+                      Swal.getContent().querySelector('strong')
+                          .textContent = Swal.getTimerLeft()
+                  }, 100)
+              },
+              onClose: () => {
+                  clearInterval(timerInterval)
+              }
+          }).then((result) => {
+              if (
+                  /* Read more about handling dismissals below */
+                  result.dismiss === Swal.DismissReason.timer
+              ) {
+                  console.log('I was closed by the timer')
+              }
+          })
+
+
+      }
+	  
+	  
+	      if (wifiswitch.checked == true) {
+	              document.getElementById("wifii").src = "/luci-static/img/wifiyes.png";
+
+          $.ajax({
+              url: '/luci-static/wifitogon.php',
+              success: function(data) {
+                  $('.result').html(data);
+              }
+          });
+
+          let timerInterval
+          Swal.fire({
+                         html: 'Turning on Wi-Fi',
+     imageUrl: '/luci-static/load.gif',
+	 imageHeight: 150,
+	 width: 400,
+	
+	
+	   showConfirmButton: false,
+              timer: 9000,
+              onBeforeOpen: () => {
+              
+                  timerInterval = setInterval(() => {
+                      Swal.getContent().querySelector('strong')
+                          .textContent = Swal.getTimerLeft()
+                  }, 100)
+              },
+              onClose: () => {
+                  clearInterval(timerInterval)
+              }
+          }).then((result) => {
+              if (
+                  /* Read more about handling dismissals below */
+                  result.dismiss === Swal.DismissReason.timer
+              ) {
+                  console.log('I was closed by the timer')
+              }
+          })
+
+
+      }
+  }
+  
+      //wifi toggle alert function END
+	  
+	  
+      //secend check parameters function (no json) START
+
+setInterval(function() {
+    var d = Math.floor(Math.random() * 1254547890);
+
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", '/luci-static/lan1.txt?var=' + d, false);
+    rawFile.onreadystatechange = function() {
+
+
+        var allText = rawFile.responseText;
+        if (allText == 1) {
+            document.getElementById("lan11").src = "/luci-static/img/lan1ok.png";
+        } 
+		if (allText == 2) {
+            document.getElementById("lan11").src = "/luci-static/img/lan1not.png";
+        }
+
+
+    }
+    rawFile.send(null);
+
+
+
+    var rawFile4 = new XMLHttpRequest();
+    rawFile4.open("GET", '/luci-static/lan2.txt?var=' + d, false);
+    rawFile4.onreadystatechange = function() {
+
+
+        var allText4 = rawFile4.responseText;
+        if (allText4 == 2) {
+            document.getElementById("lan22").src = "/luci-static/img/lan2not.png";
+        } 
+		 if (allText4 == 1) {
+            document.getElementById("lan22").src = "/luci-static/img/lan2ok.png";
+        }
+
+
+    }
+    rawFile4.send(null);
+
+
+    var rawFile5 = new XMLHttpRequest();
+    rawFile5.open("GET", '/luci-static/smscount.txt?var=' + d, false);
+    rawFile5.onreadystatechange = function() {
+
+
+        var allText5 = rawFile5.responseText;
+        document.getElementById("smsinbox").innerHTML = allText5 + " SMS Inbox";
+        var checkadd = allText5;
+
+
+    }
+    rawFile5.send(null);
+	
+	
+	    var rawFile8 = new XMLHttpRequest();
+    rawFile8.open("GET", '/luci-static/internet.txt?var=' + d, false);
+    rawFile8.onreadystatechange = function() {
+
+
+        var allText8 = rawFile8.responseText;
+                  if (allText8 == 0) {
+            document.getElementById("netshow").src = "/luci-static/img/netnon.png";
+        } 
+		 if (allText8 == 1) {
+            document.getElementById("netshow").src = "/luci-static/img/net.png";
+        } 
+
+
+    }
+    rawFile8.send(null);
+	
+	
+	
+
+
+
+
+}, 1000); 
+
+ //secend check parameters function (no json) END
+
+//first check for wifi and wan/lan toggle 
+function firstcheck() {
+
+
+    var p = Math.floor(Math.random() * 1254547890);
+
+    //start check wifi toggle
+    var rawFile6 = new XMLHttpRequest();
+    rawFile6.open("GET", '/luci-static/wifitoggle.txt?var=' + p, false);
+    rawFile6.onreadystatechange = function() {
+
+
+        var allText6 = rawFile6.responseText;
+        if (allText6 == 2) {
+
+            document.getElementById("switch4").checked = false;
+				              document.getElementById("wifii").src = "/luci-static/img/wifinon.png";
+
+        }
+
+        if (allText6 == 1) {
+
+            document.getElementById("switch4").checked = true;
+				              document.getElementById("wifii").src = "/luci-static/img/wifiyes.png";
+
+        }
+
+    }
+    rawFile6.send(null);
+
+
+    var rawFile16 = new XMLHttpRequest();
+    rawFile16.open("GET", '/luci-static/serialnumberasli.txt?var=' + p, false);
+    rawFile16.onreadystatechange = function() {
+
+
+        var allText16 = rawFile16.responseText;
+      
+
+            
+	   document.getElementById("serialtd").innerHTML = allText16 ;
+
+
+    }
+    rawFile16.send(null);
+    //end check wifi toggle 
+
+    //start check lan/wan toggle
+    var rawFile7 = new XMLHttpRequest();
+    rawFile7.open("GET", '/luci-static/lanwan.txt?var=' + p, false);
+    rawFile7.onreadystatechange = function() {
+
+
+        var allText7 = rawFile7.responseText;
+        if (allText7 == 2) {
+
+            document.getElementById("switch3").checked = false;
+        }
+
+        if (allText7 == 1) {
+
+            document.getElementById("switch3").checked = true;
+
+        }
+
+    }
+    rawFile7.send(null);
+	
+	
+	
+	
+	    var rawFile9 = new XMLHttpRequest();
+    rawFile9.open("GET", '/luci-static/simstatus.txt?var=' + p, false);
+    rawFile9.onreadystatechange = function() {
+
+
+        var allText9 = rawFile9.responseText;
+        if (allText9 == 0) {
+
+          document.getElementById("simm").src = "/luci-static/img/simnon.png";
+        }
+
+        if (allText9 == 1) {
+
+            document.getElementById("simm").src = "/luci-static/img/simyes.png";
+
+        }
+
+    }
+    rawFile9.send(null);
+
+    //end check lan/wan toggle
+
+}
+  
+  
+  
+  </script>
+  
+  <script>
+  //JSON file check START
+setInterval(function() {
+    var d = Math.floor(Math.random() * 1254547890);
+    $.getJSON('/luci-static/param.json?var=' + d, function(data) {
+
+       
+        var imeii = `${data.IMEI}`
+        var imsii = `${data.IMSI}`
+        var shabake = `${data.SHABAKE}`
+        var shabakeif = `${data.SHABAKEIF}`
+        var rssi = `${data.RSSI}`
+        var ipv4 = `${data.IPV4}`
+        var ipv6 = `${data.IPV6}`
+        var imsilenn = `${data.IMSILON}`
+        var imsicheckk = `${data.IMSICHECK}`
+	    var imsilenn = `${data.IMSILON}`
+		var operatn = `${data.OPERAT}`
+        var iccidlen = `${data.ICCIDLEN}`
+
+if ( imsilenn == "15" &&  iccidlen == "20"  ) { 
+
+        if ( shabake == "HDR" || shabake == "HDR-EHRPD" || shabake == "GSM" || shabake == "GPRS" || shabake == "EDGE" ||shabake == "WCDMA" || shabake == "HSDPA" || shabake == "HSUPA" || shabake == "HSPA+" || shabake == "FDD-LTE" && imsilenn == "15" ) { 
+         
+	            document.getElementById("typenet").innerHTML = shabake;
+                document.getElementById("ipv4net").innerHTML = ipv4;
+                document.getElementById("ipv6net").innerHTML = ipv6;
+                document.getElementById("imeinet").innerHTML = imeii;
+                document.getElementById("imsinet").innerHTML = imsii;
+				 document.getElementById("operatid").innerHTML = operatn ;
+      
+	  
+	  }else {
+	  
+	  
+	  	        document.getElementById("typenet").innerHTML = "-";
+                document.getElementById("ipv4net").innerHTML = "-";
+                document.getElementById("ipv6net").innerHTML = "-";
+                document.getElementById("imeinet").innerHTML = "-";
+                document.getElementById("imsinet").innerHTML = "-";
+				 document.getElementById("operatid").innerHTML = "-" ;
+ 
+ 
+ 
+      }
+ 
+ }else {
+ 
+ 
+ 	            document.getElementById("typenet").innerHTML = "-";
+                document.getElementById("ipv4net").innerHTML = "-";
+                document.getElementById("ipv6net").innerHTML = "-";
+                document.getElementById("imeinet").innerHTML = "-";
+                document.getElementById("imsinet").innerHTML = "-";
+				 document.getElementById("operatid").innerHTML = "-" ;
+ 
+ 
+ }
+
+     if (shabakeif == "LTE") {
+	 
+
+
+            document.getElementById("networkstatt").src = "	 /luci-static/img/4g.png";
+
+
+}
+     if (shabakeif == "WCDMA") {
+	 
+
+
+            document.getElementById("networkstatt").src = "	 /luci-static/img/3g.png";
+
+
+}
+
+     if (shabakeif == "GSM") {
+	 
+
+
+            document.getElementById("networkstatt").src = "	 /luci-static/img/2g.png";
+
+
+}
+
+
+        if (rssi <= 60) {
+            document.getElementById("darsad").innerHTML = "100%";
+            document.getElementById("styledarsad").style.width = "100%";
+            document.getElementById("styledarsad").classList.remove('bg-warning');
+            document.getElementById("styledarsad").classList.add('bg-success');
+            document.getElementById("styledarsad").classList.remove('bg-danger');
+
+
+        }
+
+        if (rssi > 60 && rssi <= 70) {
+
+            document.getElementById("darsad").innerHTML = "85%";
+            document.getElementById("styledarsad").style.width = "85%";
+            document.getElementById("styledarsad").classList.remove('bg-warning');
+            document.getElementById("styledarsad").classList.add('bg-success');
+            document.getElementById("styledarsad").classList.remove('bg-danger');
+
+
+
+        }
+
+        if (rssi > 70 && rssi <= 80) {
+
+            document.getElementById("darsad").innerHTML = "70%";
+            document.getElementById("styledarsad").style.width = "70%";
+            document.getElementById("styledarsad").classList.add('bg-warning');
+            document.getElementById("styledarsad").classList.remove('bg-success');
+            document.getElementById("styledarsad").classList.remove('bg-danger');
+
+
+
+        }
+
+
+        if (rssi > 80 && rssi <= 90) {
+
+
+            document.getElementById("darsad").innerHTML = "50%";
+            document.getElementById("styledarsad").style.width = "50%";
+            document.getElementById("styledarsad").classList.add('bg-warning');
+            document.getElementById("styledarsad").classList.remove('bg-success');
+            document.getElementById("styledarsad").classList.remove('bg-danger');
+
+
+
+
+        }
+        if (rssi > 90 && rssi <= 100) {
+
+            document.getElementById("darsad").innerHTML = "30%";
+            document.getElementById("styledarsad").style.width = "30%";
+            document.getElementById("styledarsad").classList.remove('bg-warning');
+            document.getElementById("styledarsad").classList.remove('bg-success');
+            document.getElementById("styledarsad").classList.add('bg-danger');
+
+
+
+        }
+        if (rssi > 100) {
+
+
+            document.getElementById("darsad").innerHTML = "15%";
+            document.getElementById("styledarsad").style.width = "15%";
+            document.getElementById("styledarsad").classList.remove('bg-warning');
+            document.getElementById("styledarsad").classList.remove('bg-success');
+            document.getElementById("styledarsad").classList.add('bg-danger');
+
+
+
+        }
+
+
+
+
+    });
+}, 1000);
+
+  
+  </script>
+  
+
+  
+  <script>
+  
+  setInterval(function() {
+  
+   var lo = Math.floor(Math.random() * 10) + 30 ;
+   var loo = Math.floor(Math.random() * 15) + 30 ;
+  
+                document.getElementById("darsadcpu").innerHTML = lo+"%";
+            document.getElementById("stylecpu").style.width = lo+"%";
+
+			
+			                document.getElementById("darsadram").innerHTML = loo+"%";
+            document.getElementById("styleram").style.width = loo+"%";
+
+  
+  
+  
+  }, 50000);
+  
+  
+  
+  </script>
+<script src="/luci-static/sweet.js"></script>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="/luci-static/vendor/jquery/jquery.min.js"></script>
+  <script src="/luci-static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="/luci-static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="/luci-static/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="/luci-static/vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="/luci-static/js/demo/chart-area-demo.js"></script>
+  <script src="/luci-static/js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>

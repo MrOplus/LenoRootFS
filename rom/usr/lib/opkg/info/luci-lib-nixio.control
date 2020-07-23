@@ -1,0 +1,9 @@
+Package: luci-lib-nixio
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc, liblua
+Source: feeds/luci/libs/luci-lib-nixio
+License: Apache-2.0
+Section: luci
+Architecture: mipsel_24kc
+Installed-Size: 27927
+Description:  NIXIO POSIX library

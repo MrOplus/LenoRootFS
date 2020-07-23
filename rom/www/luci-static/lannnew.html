@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body onload="redblood()" >
+<meta name="viewport" content="initial-scale=1.0">
+<link rel="stylesheet" href="/luci-static/mac.css">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<center>
+<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+<form onsubmit="lannew()" method="post" action="/luci-static/lan.php"  target="hiddenFrame"> 
+<label>IPV4 Gateway:</label><input id="ipv4" name="ipv4" type="text" value="192.168.1.1" title="IP Format : ext 192.168.100.100"  pattern="^([0-9]{1,3}\.){3}[0-9]{1,3}$"  /></br>
+<label>IPV4 Netmask:</label><input id="netmask" name="netmask" type="text" value="255.255.255.0" title="IP Format : ext 225.225.225.225"  pattern="^([0-9]{1,3}\.){3}[0-9]{1,3}$"  /></br>
+<label>Start:</label><input id="startip"   value="192.168.1"  readonly/>.<input id="start" name="start" type="number" value="100"  /></br> 
+<label>Limit:</label><input id="limitip"   value="192.168.1"  readonly/>.<input id="limit" name="limit" type="number" value="250"  /></br> 
+<label>Lease Time:</label><input id="lease" name="lease" type="text" value="24h"  /></br> 
+<label>Router Mode (Ping LAN to LAN) </label><select id="rooter" name="rooter"><option value="disable">Disable</option><option value="enable">Enable</option></select><br><br>
+<input type="submit" value="Save & Apply"> 
+<input type="reset" value="Reset"> 
+</form>
+
+<iframe id="lanframe" src="/cgi-bin/luci/admin/network/dhcp" width="100%" height="300px" frameBorder="0" scrolling="no"> </iframe>
+</center>
+  <script src="/luci-static/vendor/jquery/jquery.min.js"></script>
+  <script src="/luci-static/mac.js"></script>
+  <script src="/luci-static/sweet.js"></script>
+</body>
+</html>

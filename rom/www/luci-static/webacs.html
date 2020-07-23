@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body onload="redblood()" >
+<meta name="viewport" content="initial-scale=1.0">
+<link rel="stylesheet" href="/luci-static/mac.css">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<center>
+<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+ <form method="post" onsubmit="webacspage()" action="/luci-static/webacs.php" target="hiddenFrame" > 
+Web Access Remote :<br><select name="webacs"><option value="1">Enable</option><option value="0" selected>Disable</option></select>
+</br></br>
+Ping from wan :<br><select name="pingg"><option value="1" >Enable</option><option value="0" selected>Disable</option></select>
+</br></br>
+<input type="submit" value="Save Settings"> 
+</form> 
+</center>
+  <script src="/luci-static/vendor/jquery/jquery.min.js"></script>
+  <script src="/luci-static/mac.js"></script>
+  <script src="/luci-static/sweet.js"></script>
+</body>
+</html>

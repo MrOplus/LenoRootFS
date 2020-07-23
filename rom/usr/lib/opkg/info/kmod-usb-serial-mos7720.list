@@ -1,0 +1,2 @@
+/etc/modules.d/usb-serial-mos7720
+/lib/modules/4.14.128/mos7720.ko

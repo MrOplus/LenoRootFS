@@ -1,0 +1,1 @@
+This is the extracted ROOTFS of Lenotek (Irancell) 4g CPE 

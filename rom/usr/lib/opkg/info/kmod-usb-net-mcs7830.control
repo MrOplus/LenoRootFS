@@ -1,0 +1,9 @@
+Package: kmod-usb-net-mcs7830
+Version: 4.14.128-1
+Depends: kernel (=4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net
+Source: package/kernel/linux
+License: GPL-2.0
+Section: kernel
+Architecture: mipsel_24kc
+Installed-Size: 3245
+Description:  Kernel module for USB-to-Ethernet MCS7830 convertors

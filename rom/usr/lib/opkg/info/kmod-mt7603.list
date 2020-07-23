@@ -1,0 +1,4 @@
+/lib/firmware/mt7628_e1.bin
+/lib/firmware/mt7628_e2.bin
+/lib/modules/4.14.128/mt7603e.ko
+/etc/modules.d/mt7603

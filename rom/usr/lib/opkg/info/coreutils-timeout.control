@@ -1,0 +1,9 @@
+Package: coreutils-timeout
+Version: 8.23-3
+Depends: libc, coreutils, librt
+Source: feeds/packages/utils/coreutils
+Section: utils
+Maintainer: Jo-Philipp Wich <jo@mein.io>
+Architecture: mipsel_24kc
+Installed-Size: 18677
+Description:  Full version of standard GNU timeout utility.

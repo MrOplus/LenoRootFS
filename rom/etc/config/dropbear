@@ -1,0 +1,3 @@
+config dropbear
+	option enable       '0'
+#	option BannerFile   '/etc/banner'

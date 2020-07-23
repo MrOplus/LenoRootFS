@@ -1,0 +1,8 @@
+Package: luci-proto-3g
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc, comgt
+Source: feeds/luci/protocols/luci-proto-3g
+Section: luci
+Architecture: all
+Installed-Size: 2074
+Description:  Support for 3G

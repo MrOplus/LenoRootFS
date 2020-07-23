@@ -1,0 +1,9 @@
+Package: libmicroxml
+Version: 2015-03-18-caa8d3e6887f5c70e54df555dd78e4e45cfa74cc
+Depends: libc
+Source: package/libmicroxml
+Section: libs
+Maintainer: Luka Perkov <luka@openwrt.org>
+Architecture: mipsel_24kc
+Installed-Size: 15839
+Description:  A micro sized XML library

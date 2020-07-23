@@ -1,0 +1,3 @@
+/lib/modules/4.14.128/ohci-pci.ko
+/etc/modules.d/51-usb-ohci-pci
+/etc/modules-boot.d/51-usb-ohci-pci

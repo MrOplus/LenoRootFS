@@ -1,0 +1,88 @@
+
+    <script src="/luci-static/jquery-3.2.1.min.js"></script>
+    <script src="/luci-static/formajax.js"></script>
+  
+  <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/luci-static/mac.css">
+
+<style>
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 40px;
+  height: 300px; 
+  margin-top: -10px;
+
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+</style>
+</head>
+<body>
+
+
+
+
+<center>
+<p>resualt</p>
+	 <iframe style="border:2px solid #ccc; border-radius:5px;" id="ussdiframe" width="100%" height="100px" src=""  > </iframe>
+</center>
+
+
+
+<div class="row">
+  <div class="column" >
+  <center>
+ <h5>Get SIM Credit by USSD </h5>
+ <form onsubmit="looloo()" action="/luci-static/ussdc.php">
+<input value="Balance Enquiry"  type="submit" id="myBtn">
+</form>
+<h5>charge SIM Card </h5>
+<form onsubmit="looloo()" method="POST" action="/luci-static/ussdp.php">
+<input value="" name="ramzz" placeholder="charge code"  type="text" id="credit"><br>
+<input value="Recharge SIM Card"  type="submit" id="myBtn">
+</form>
+</center>
+  </div>
+
+  <div class="column" >
+  <center>
+ <h5>All Irancell Services </h5>
+<form onsubmit="looloo()" method="POST" action="/luci-static/ussdg.php">
+<input value="Run *555#"  type="submit" id="myBtn">
+</form>
+<form onsubmit="looloo()" method="POST" action="/luci-static/ussdgg.php">
+<input value="" name="requ" placeholder="your request"  type="text" id="requ"><br>
+<input value="Send Request"  type="submit" id="myBtn">
+</form>
+
+</center>
+  </div>
+</div>
+<center>  <img width="150px" style="display:none" id="loopoo" src="/luci-static/load.gif" > </center>
+
+
+  <script src="/luci-static/mac.js"></script>
+
+
+</body>
+</html>
+
+

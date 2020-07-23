@@ -1,0 +1,42 @@
+
+
++QCSQ: "NOSERVICE"
+
+
+
+OK
+
+
+
++QTEMP: 36,32,32
+
+OK
+
+
+
++QENG: "servingcell","SEARCH"
+
+
+
+OK
+
+
+
+ERROR
+
+
+
++QNWINFO: No Service
+
+
+
+OK
+
+
+
+860425043860046
+
+
+
+OK
+

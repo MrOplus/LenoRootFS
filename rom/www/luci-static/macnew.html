@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body onload="redblood()" >
+<meta name="viewport" content="initial-scale=1.0">
+<link rel="stylesheet" href="/luci-static/mac.css">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<center>
+
+<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+ <form method="post" id="macnewiframee" onsubmit="macnew()" action="" target="hiddenFrame" > 
+MAC-Filtering Mode:<br><select id="yoyo" name="mode"><option value="disable">Disable</option><option value="black">Black List</option><option value="white">White List</option></select><br><br>
+<ul>
+<li>1 :<input class="dissss" id="MAC" name="mac1" type="text"  style="text-transform:uppercase"  pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" /></li>
+<li>2 :<input class="dissss" id="MAC2" name="mac2" type="text"  style="text-transform:uppercase" pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" /></li>
+<li>3 :<input class="dissss" id="MAC3" name="mac3" type="text"  style="text-transform:uppercase" pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"  /></li>
+<li>4 :<input class="dissss" id="MAC4" name="mac4" type="text"  style="text-transform:uppercase" pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"  /></li>
+<li>5 :<input class="dissss" id="MAC5" name="mac5" type="text"   style="text-transform:uppercase" pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"  /></li>
+<li>6 :<input class="dissss" id="MAC6" name="mac6" type="text"  style="text-transform:uppercase"  pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" /></li>
+<li>7 :<input class="dissss" id="MAC7" name="mac7" type="text"  style="text-transform:uppercase" pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"  /></li>
+<li>8 :<input class="dissss" id="MAC8" name="mac8" type="text"   style="text-transform:uppercase"  pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" /></li>
+<li>9 :<input class="dissss" id="MAC9" name="mac9" type="text"   style="text-transform:uppercase" pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"  /></li>
+<li>10:<input class="dissss" id="MAC10" name="mac10" type="text"  style="text-transform:uppercase" pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"  /></li>
+</ul>
+<input type="submit" value="Save & Apply">
+<input type="reset" value="Reset"> 
+</form>
+
+</center>
+  <script src="/luci-static/vendor/jquery/jquery.min.js"></script>
+  <script src="/luci-static/mac.js"></script>
+  <script src="/luci-static/sweet.js"></script>
+
+</body>
+</html>

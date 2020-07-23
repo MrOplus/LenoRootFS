@@ -1,0 +1,61 @@
+
+config system
+	option ttylogin '0'
+	option log_size '64'
+	option urandom_seed '0'
+	option hostname 'Irancell-FD-i40-E1'
+	option zonename 'Asia/Tehran'
+	option timezone '<+0330>-3:30<+0430>,J79/24,J263/24'
+
+config timeserver 'ntp'
+	option enabled '1'
+	option enable_server '0'
+	list server '0.openwrt.pool.ntp.org'
+	list server '1.openwrt.pool.ntp.org'
+	list server '2.openwrt.pool.ntp.org'
+	list server '3.openwrt.pool.ntp.org'
+
+config led 'led_lan1'
+	option name 'lan1'
+	option sysfs 'u7628-01:green:lan1'
+	option trigger 'switch0'
+	option port_mask '0x2'
+
+config led 'led_lan2'
+	option name 'lan2'
+	option sysfs 'u7628-01:green:lan2'
+	option trigger 'switch0'
+	option port_mask '0x4'
+
+config led 'led_lan3'
+	option name 'lan3'
+	option sysfs 'u7628-01:green:lan3'
+	option trigger 'switch0'
+	option port_mask '0x8'
+
+config led 'led_lan4'
+	option name 'lan4'
+	option sysfs 'u7628-01:green:lan4'
+	option trigger 'switch0'
+	option port_mask '0x10'
+
+config led 'led_wan'
+	option name 'wan'
+	option sysfs 'u7628-01:green:wan'
+	option trigger 'switch0'
+	option port_mask '0x01'
+
+config led 'led_usb'
+	option name 'USB'
+	option sysfs 'u7628-01:green:usb'
+	option trigger 'usbdev'
+	option interval '50'
+	option dev '1-1'
+
+config led 'led_wifi_led'
+	option name 'wifi'
+	option sysfs 'u7628-01:green:wlan'
+	option trigger 'netdev'
+	option mode 'link tx rx'
+	option dev 'wlan0'
+

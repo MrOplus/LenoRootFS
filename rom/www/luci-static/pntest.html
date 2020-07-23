@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<body onload="getapnlist()" >
+<meta name="viewport" content="initial-scale=1.0">
+<link rel="stylesheet" href="/luci-static/mac.css">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<center>
+<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+<iframe id="apnframe" src="/luci-static/apnlist.html" width="70%" height="250px" frameBorder="0" scrolling="no"> </iframe>
+
+<form onsubmit="apn()" method="post" action="/luci-static/apnn.php" target="hiddenFrame"  > 
+<label>APN Name:</label><input id="apnname" name="apnname" type="text" value=""  /></br>
+<label>APN Username:</label><input id="apnuname" name="apnuname" type="text" value=""   /></br>
+<label>APN Password:</label><input id="apnpass" name="apnpass" type="text" value=""  /></br> 
+<label>Protocol:</label> <select  name="proto" id="proto"><option value="IP">IPV4</option><option value="IPV4V6">IPV4V6</option><option value="IPV6">IPV6</option></select><br>
+<label>Authentication :</label> <select  name="aut" id="aut"><option value="NONE">NONE</option><option value="PAP">PAP</option><option value="CHAP">CHAP</option></select><br>
+
+<input type="submit" value="Set APN"> 
+
+</form>
+
+<form onsubmit="apn()" method="post" action="/luci-static/apnnn.php" target="hiddenFrame"  >
+<input type="submit" value="clean APN"> 
+
+
+</form>
+<form onsubmit="apn()" method="post" action="/luci-static/apnndef.php" target="hiddenFrame"  > 
+<label>Select default APN :</label> <select  name="def" id="def"><option value="1">irancell-internet</option><option id="apn2" value="2"></option><option id="apn3" value="3"></option><option id="apn4" value="4"></option><option id="apn5" value="5"></option><option id="apn6" value="6"></option></select><br>
+
+<input type="submit" value="Set Default APN"> 
+
+</form>
+</center>
+        <script language="javascript" type="text/javascript">    
+
+function getapnlist () {
+var avali =  document.getElementById('apnframe').contentWindow.document.getElementById('aval').innerHTML;
+var dovomi =  document.getElementById('apnframe').contentWindow.document.getElementById('dovom').innerHTML;
+var sevomi =  document.getElementById('apnframe').contentWindow.document.getElementById('sevom').innerHTML;
+var charomi =  document.getElementById('apnframe').contentWindow.document.getElementById('charom').innerHTML;
+var panjomi =  document.getElementById('apnframe').contentWindow.document.getElementById('panjom').innerHTML;
+
+document.getElementById('apn2').innerHTML = avali ;
+document.getElementById('apn3').innerHTML = dovomi ;
+document.getElementById('apn4').innerHTML = sevomi ;
+document.getElementById('apn5').innerHTML = charomi ;
+document.getElementById('apn6').innerHTML = panjomi ;
+
+
+}
+	
+   var kca = Math.floor(Math.random() * 1254547890);                                                              
+
+        
+          document.getElementById('apnframe').src = "/luci-static/apnlist.html?var="+kca; 
+
+                                                                                            
+</script> 
+  <script src="/luci-static/vendor/jquery/jquery.min.js"></script>
+  <script src="/luci-static/mac.js"></script>
+  <script src="/luci-static/sweet.js"></script>
+</body>
+</html>

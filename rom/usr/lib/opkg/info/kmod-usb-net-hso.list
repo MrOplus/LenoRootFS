@@ -1,0 +1,2 @@
+/etc/modules.d/usb-net-hso
+/lib/modules/4.14.128/hso.ko

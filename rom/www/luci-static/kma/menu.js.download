@@ -1,0 +1,52 @@
+// 加载内容页面
+function loadpage(page)
+{
+	// 清理单独页面的刷新事件，再加载新页面
+	deviceListInfoLoad = window.clearInterval(deviceListInfoLoad);//已连接设备列表
+	MainInfooLoadIdl = window.clearInterval(MainInfooLoadIdl);//主页刷新数据
+	TimeSeting = window.clearInterval(TimeSeting);
+	// 加载页面
+	$('#Content').load(page,function (){
+        if(g_web_show == WEB_IRAN)
+        	$(".content_header").hide();
+		$("#menu_ul li a").each(function(){
+			var temp = $(this).attr("onclick");
+			if(temp.indexOf("loadpage") > -1 && temp.indexOf(page) > -1 ){
+				$("#iran_current_menu_div").html($(this).find("label").text());
+			}
+		});
+		if(g_ussd_check_state_id !=0){
+            clearInterval(g_ussd_check_state_id);
+			g_ussd_check_state_id = 0;
+		}
+	});
+
+	// 延时3S刷新
+	$("#dialog_main_loading").dialog("open");
+
+	setTimeout(function(){
+		$("#dialog_main_loading").dialog("close");
+	}, 1500);
+}
+
+function setSelectedMenu(Me){
+	$("#menu_ul").find("li").each(function(){
+		if(this === Me){
+            if(g_web_show == WEB_SMART){
+                $(this).css("background","");
+                $(this).attr("class","menu_smart_selected");     
+            }
+			else if(g_web_show == WEB_IRAN)
+            	$(this).attr("class","menu_iran_selected");
+            else
+				$(this).attr("class","menu_selected");
+		}else{
+            if(g_web_show == WEB_SMART){
+                $(this).css("background","url(../../images/menu_btn_smart.png) no-repeat center");
+                $(this).attr("class","");     
+            }
+            else
+				$(this).attr("class","");
+		}
+	});
+}

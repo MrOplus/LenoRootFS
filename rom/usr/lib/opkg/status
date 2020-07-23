@@ -1,0 +1,1734 @@
+Package: terminfo
+Version: 6.1-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-sched-connmark
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-sched-core, kmod-ipt-core, kmod-ipt-conntrack-extra
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libuci-lua
+Version: 2019-05-17-f199b961-1
+Depends: libc, libuci, liblua
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: iwinfo
+Version: 2018-07-31-65b8333f-1
+Depends: libc, libiwinfo
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-net-cdc-subset
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-keyspan
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libc
+Version: 1.1.19-1
+Depends: libgcc
+Status: install hold installed
+Essential: yes
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-l2tp
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-udptunnel4, kmod-udptunnel6
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-usb-net-asix-ax88179
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-libphy, kmod-usb-net
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: opkg
+Version: 2019-01-18-7708a01a-1
+Depends: libc, uclient-fetch, libpthread, libubox
+Status: install user installed
+Essential: yes
+Architecture: mipsel_24kc
+Conffiles:
+ /etc/opkg.conf f38c19f696ea87c0b30eb5bfeb8657237f4625e1a749c58b99f01595edfb6446
+ /etc/opkg/customfeeds.conf 61d1f3aa62fe977614ed0c2f0ad3b2ee2f7b451bfb34812071d86d31a4d43d4a
+Installed-Time: 1561119445
+
+Package: kmod-usb-core
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-nls-base
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libpthread
+Version: 1.1.19-1
+Depends: libgcc
+Status: install hold installed
+Essential: yes
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: ubus
+Version: 2018-10-06-221ce7e7-1
+Depends: libc, libubus, libblobmsg-json, ubusd
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: iw
+Version: 4.14-1
+Depends: libc, libnl-tiny
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-crypto-manager
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-crypto-aead, kmod-crypto-hash, kmod-crypto-pcompress
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-crypto-pcompress
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: rpcd
+Version: 2018-11-28-3aa81d0d-2
+Depends: libc, libubus, libubox, libuci, libblobmsg-json
+Status: install user installed
+Architecture: mipsel_24kc
+Conffiles:
+ /etc/config/rpcd 81a24774226d42c6ea53b531992335cc910094a7e17f80a803e680e2eededd4f
+Installed-Time: 1561119445
+
+Package: busybox
+Version: 1.28.4-3
+Depends: libc, jsonfilter
+Status: install user installed
+Essential: yes
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Alternatives: 100:/usr/bin/flock:/bin/busybox, 100:/usr/bin/free:/bin/busybox, 100:/sbin/ip:/bin/busybox, 100:/bin/kill:/bin/busybox, 100:/usr/bin/pgrep:/bin/busybox, 100:/bin/ps:/bin/busybox, 100:/usr/bin/top:/bin/busybox, 100:/usr/bin/uptime:/bin/busybox
+
+Package: kmod-usb-net-qmi-wwan
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net, kmod-usb-wdm
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: luci-lib-ip
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc, liblua, libnl-tiny
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: chat
+Version: 2.4.7-12
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-nfnetlink
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: libubus-lua
+Version: 2018-10-06-221ce7e7-1
+Depends: libc, libubus, liblua
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-crypto-hash
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-nf-reject6
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-crypto-aead
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-crypto-null
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-belkin
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-net-cdc-eem
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libiwinfo-lua
+Version: 2018-07-31-65b8333f-1
+Depends: libc, libiwinfo, liblua
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-wdm
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-core
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: swconfig
+Version: 11
+Depends: libc, libuci, libnl-tiny
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libiwinfo
+Version: 2018-07-31-65b8333f-1
+Depends: libc, libnl-tiny, libuci, libubus
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libcurl
+Version: 7.60.0-4
+Depends: libc, libmbedtls, ca-bundle
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-usb-serial-sierrawireless
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-nf-flow
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-nf-conntrack
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-lib-crc-ccitt
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-gre
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-iptunnel
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-pppoa
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-ppp, kmod-atm
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: luci-theme-bootstrap
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc
+Status: install user installed
+Architecture: all
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-pppoe
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-ppp, kmod-pppox
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-pppox
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-ppp
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-ipt-conntrack
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-ipt-core, kmod-nf-conntrack
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-nf-reject
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: base-files
+Version: 194.2-r7798-97ae9e0ccb
+Depends: libc, netifd, procd, jsonfilter, usign, openwrt-keyring, fstools, fwtool
+Status: install user installed
+Architecture: mipsel_24kc
+Conffiles:
+ /etc/ethers 56bda09b0aa3d1e88107bfa8a1c6e4449d5c1f47245dc1c4037ff9b5db163b7c
+ /etc/group cc81720c9b4bb67c723fcf7dc51823a9e6937c4a3e6302db60285ffebfde08f7
+ /etc/hosts c1a978d90673437b35fa9494e0a54294062c152bb653d490b718052ab88447fd
+ /etc/inittab 8b395f7d827753e1e92d4a1c369d9fe16caa23bf742b3f78e4599c4dd9b1b6e3
+ /etc/iproute2/rt_protos a0712b1771c8d5f3e0dcf9a6314880e71aa3498ea1ae873535bdfcf70d814061
+ /etc/iproute2/rt_tables f771e2b81741f70e3faf658dc504f0dc048672fc8caaadea15e46c35da3de8f8
+ /etc/passwd 6a451aa33393f47ade89b8bce4d9711818c2630394c3967265ffed276bb25a55
+ /etc/profile 9e36315e247bae64a6027c973cb421ff6fd76b8eae5adbac824cc8ad63f5a996
+ /etc/protocols 7d551355d5540b07b9d86e623cbbc4abecbb94d2a662b3afcc917940eb0e3d52
+ /etc/rc.local 46934f814550d0f711e31cbcc3be01217e3259b5fb09a98e4895366845952fce
+ /etc/services 754ccc71ca347bc79ac4c45139d416b7cf1e65a919dad1db15613a216cd6b9cc
+ /etc/shadow 57667dbabf94a1832c45ced334e4a9024f1cde3b26a3d7366639ffcb2dce86e3
+ /etc/shells 8b35ce73c18161a7d7ed16fa244410993bd031515260e3e0c11749047df48d0a
+ /etc/sysctl.conf c02fe88dc055a1eaee9e7cb631760a3a5a9cea55610b42aa45196838c6f1a55e
+ /etc/sysupgrade.conf 9e87b05fe2f12c84d1c465b396322748479f64bc40e5bab061887f0bd95020a6
+Installed-Time: 1561119445
+
+Package: kmod-lib-crc16
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-nf-nat
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-nf-conntrack
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: php7-cgi
+Version: 7.2.17-1
+Depends: libc, php7
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libpcre
+Version: 8.41-2
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-visor
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: zoneinfo-asia
+Version: 2018e-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: netifd
+Version: 2019-01-31-a2aba5c7-2.1
+Depends: libc, libuci, libnl-tiny, libubus, ubus, ubusd, jshn, libubox
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: coreutils
+Version: 8.23-3
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libmnl
+Version: 1.0.4-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-pl2303
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-ohci
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-core
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-mii
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: dnsmasq
+Version: 2.80-1.4
+Depends: libc, libubus
+Status: install user installed
+Architecture: mipsel_24kc
+Conffiles:
+ /etc/config/dhcp e90f7b32e9c4e8f526a435607f792aa0439dd69fabfe1038eed5b27efc616be0
+ /etc/dnsmasq.conf 1e6ab19c1ae5e70d609ac7b6246541d52042e4dee1892f825266507ef52d7dfd
+Installed-Time: 1561119445
+
+Package: procd
+Version: 2018-03-28-dfb68f85-1
+Depends: libc, ubusd, ubus, libjson-script, ubox, libubox, libubus
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-usb-net-mcs7830
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: resolveip
+Version: 2
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-l2tp-ip
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-l2tp
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libmbedtls
+Version: 2.16.1-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: ubusd
+Version: 2018-10-06-221ce7e7-1
+Depends: libc, libubox, libblobmsg-json
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-mt76
+Version: 4.14.128+2019-03-23-a5f5605f-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-mt76-core, kmod-mt76x2, kmod-mt7603
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-net-dm9601-ether
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: hostapd-utils
+Version: 2018-05-21-62566bc2-6
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libiconv-full
+Version: 1.11.1-3
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-qualcomm
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial, kmod-usb-serial-wwan
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libelf1
+Version: 0.169-1
+Depends: libc, zlib
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-oti6858
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-iptunnel
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-usb-ehci
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-core
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-ipip
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-iptunnel, kmod-iptunnel4
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-ipt-raw6
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-ipt-core, kmod-ip6tables
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-mos7720
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-pptp
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-ppp, kmod-gre, kmod-pppox
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-net-cdc-mbim
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net, kmod-usb-wdm, kmod-usb-net-cdc-ncm
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: iconv
+Version: 1.11.1-3
+Depends: libc, libiconv-full, libcharset
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: linux-atm
+Version: 2.5.2-5
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-usb-net-rndis
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net, kmod-usb-net-cdc-ether
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb2
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-ehci, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-option
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial-wwan, kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: firewall
+Version: 2018-08-13-1c4d5bcd-1
+Depends: libc, libubox, libubus, libuci, libip4tc, libip6tc, libxtables, kmod-ipt-core, kmod-ipt-conntrack, kmod-nf-conntrack6, kmod-ipt-nat
+Status: install user installed
+Architecture: mipsel_24kc
+Conffiles:
+ /etc/config/firewall 303d858071dfcf1d1e8593168eb9c582a2c774211f23cef4bf7c85e4060a5e8c
+ /etc/firewall.user bd68324966481011f5e36570258ad97dd422655c16f3119d48325ed8459de510
+Installed-Time: 1561119445
+
+Package: comgt
+Version: 0.32-30
+Depends: libc, chat
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: luci-app-firewall
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc, firewall
+Status: install user installed
+Architecture: all
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: php7-cli
+Version: 7.2.17-1
+Depends: libc, php7
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-ipt-conntrack-extra
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-ipt-core, kmod-ipt-conntrack
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-nf-ipt
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-net-sierrawireless
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: tc
+Version: 4.16.0-8
+Depends: libc, kmod-sched-core
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: libuci
+Version: 2019-05-17-f199b961-1
+Depends: libc, libubox
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: liblua
+Version: 5.1.5-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: libip4tc
+Version: 1.6.2-1
+Depends: libc, libxtables
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-ip6tables
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-nf-reject6, kmod-nf-ipt6, kmod-ipt-core
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: odhcp6c
+Version: 2018-07-14-67ae6a71-15
+Depends: libc, libubox
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-l2tp-eth
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-l2tp
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: fstools
+Version: 2019-03-28-ff1ded63-5
+Depends: libc, ubox
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-udptunnel4
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: uclient-fetch
+Version: 2018-11-24-3ba74ebc-1
+Depends: libc, libuclient
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libuclient
+Version: 2018-11-24-3ba74ebc-1
+Depends: libc, libubox
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-udptunnel6
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-ti-usb
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: ipip
+Version: 1-2
+Depends: libc, kmod-ipip, resolveip
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: iptables-mod-ipopt
+Version: 1.6.2-1
+Depends: libc, iptables, kmod-ipt-ipopt
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: uci
+Version: 2019-05-17-f199b961-1
+Depends: libc, libuci
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: lua
+Version: 5.1.5-1
+Depends: libc, liblua
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-mt76x2-common
+Version: 4.14.128+2019-03-23-a5f5605f-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-mac80211, kmod-mt76-core, kmod-mt76x02-common
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: ppp-mod-pppol2tp
+Version: 2.4.7-12
+Depends: libc, kmod-pppol2tp
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: dropbear
+Version: 2017.75-7.1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Conffiles:
+ /etc/dropbear/dropbear_rsa_host_key e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+ /etc/config/dropbear e96a61b63426fa420234c7ef48271aa80f5ff073aaf0dc2e1b4af6f2613d67e7
+Installed-Time: 1561119445
+Alternatives: 100:/usr/bin/ssh:/usr/sbin/dropbear, 100:/usr/bin/scp:/usr/sbin/dropbear
+
+Package: php7-mod-json
+Version: 7.2.17-1
+Depends: libc, php7
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: luci-proto-3g
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc, comgt
+Status: install user installed
+Architecture: all
+Installed-Time: 1561119445
+
+Package: curl
+Version: 7.60.0-4
+Depends: libc, libcurl
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-usb-net-asix
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-libphy, kmod-usb-net
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-wwan
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: zoneinfo-core
+Version: 2018e-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: xl2tpd
+Version: 1.3.12-1
+Depends: libc, ppp-mod-pppol2tp, resolveip
+Status: install user installed
+Architecture: mipsel_24kc
+Conffiles:
+ /etc/xl2tpd/xl2tpd.conf 9c0a4b092e54774ea6aeae990fe68c4fd2fe15efb72740908147a17125bf1a6e
+ /etc/xl2tpd/xl2tp-secrets a1cfae4314863abf017d942678504b0fbd34107f7de2fa4710dd5465ef159274
+ /etc/ppp/options.xl2tpd 1b71717c00057b9b60a22c509d5d2b2655ecf4c1e326e39af86def67ede909ca
+Installed-Time: 1561119445
+
+Package: libmicroxml
+Version: 2015-03-18-caa8d3e6887f5c70e54df555dd78e4e45cfa74cc
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: mtd
+Version: 23
+Depends: libc, libubox
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: odhcpd-ipv6only
+Version: 1.15-3
+Depends: libc, libubox, libuci, libubus, libnl-tiny
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: wpad
+Version: 2018-05-21-62566bc2-6
+Depends: libc, libnl-tiny, hostapd-common, libubus
+Provides: hostapd, wpa-supplicant
+Conflicts: hostapd, hostapd-mini, hostapd-openssl, hostapd-wolfssl
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: coreutils-timeout
+Version: 8.23-3
+Depends: libc, coreutils, librt
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: smstools3
+Version: 3.1.21-2
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libjson-c
+Version: 0.12.1-2
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: luci-proto-qmi
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc, uqmi
+Status: install user installed
+Architecture: all
+Installed-Time: 1561119445
+
+Package: libgcc
+Version: 7.3.0-1
+Status: install hold installed
+Essential: yes
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: usb-modeswitch
+Version: 2017-12-19-f40f84c2-1
+Depends: libc, libubox, libblobmsg-json, libusb-1.0
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libip6tc
+Version: 1.6.2-1
+Depends: libc, libxtables
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: php7-mod-session
+Version: 7.2.17-1
+Depends: libc, php7
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: ipset
+Version: 6.38-1
+Depends: libc, kmod-ipt-ipset, libmnl, libipset
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-net-kaweth
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: luci-proto-ppp
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc
+Status: install user installed
+Architecture: all
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: ppp
+Version: 2.4.7-12
+Depends: libc, kmod-ppp
+Status: install user installed
+Architecture: mipsel_24kc
+Conffiles:
+ /etc/ppp/chap-secrets 6981fa176a79f8c12be5826c421b16253a616747018ba7e76752a9d36d1d51d4
+ /etc/ppp/filter 579583b318e0cff706ffc134620b42d3fbce8fc31aeb0ad7eea1cc859868e902
+ /etc/ppp/options 01f7358a5528be037dde329a2ecfb7a63382aababf21d4f5bc085f5acef95133
+Installed-Time: 1561119445
+
+Package: luci-mod-admin-full
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc, luci-base
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: libubox
+Version: 2018-07-25-c83a84af-2
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: luci-base
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc, lua, luci-lib-nixio, luci-lib-ip, rpcd, libubus-lua, luci-lib-jsonc, liblucihttp-lua
+Status: install user installed
+Architecture: mipsel_24kc
+Conffiles:
+ /etc/luci-uploads/.placeholder e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+ /etc/config/luci 5a7c058ee80817cbda78401fa5e13eb2c0580d4aca9e4bf00df12f8d558aec29
+ /etc/config/ucitrack 3480e8ca8e224537c9d95e7678b05123ff7b06a2a0b3d1000032a04576d90381
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-usb-net-pegasus
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-leds-gpio
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libusb-1.0
+Version: 1.0.22-1
+Depends: libc, libpthread, librt
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-gpio-button-hotplug
+Version: 4.14.128-2
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: logd
+Version: 2018-02-14-128bc35f-2
+Depends: libc, libubox, libubus, libblobmsg-json
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-mt7603
+Version: 4.14.128+2019-03-23-a5f5605f-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-mac80211, kmod-mt76-core
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: ppp-mod-pptp
+Version: 2.4.7-12
+Depends: libc, kmod-pptp, kmod-mppe, resolveip
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-net
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-mii, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-mt76x02-common
+Version: 4.14.128+2019-03-23-a5f5605f-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-mac80211, kmod-mt76-core
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-net-smsc95xx
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net, kmod-lib-crc16
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: librt
+Version: 1.1.19-1
+Depends: libpthread
+Status: install hold installed
+Essential: yes
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-mct
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-mac80211
+Version: 4.14.128+2017-11-01-10
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-cfg80211, hostapd-common
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-core
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libjson-script
+Version: 2018-07-25-c83a84af-2
+Depends: libc, libubox
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-usb-net-cdc-ncm
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: luci-proto-ipv6
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc
+Status: install user installed
+Architecture: all
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: libblobmsg-json
+Version: 2018-07-25-c83a84af-2
+Depends: libc, libjson-c, libubox
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-usb-net-hso
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-crypto-ecb
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-crypto-manager
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-net-kalmia
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: iptables
+Version: 1.6.2-1
+Depends: libc, kmod-ipt-core, libip4tc, libip6tc, libxtables
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: openwrt-keyring
+Version: 2018-05-18-103a32e9-1
+Depends: libc
+Provides: lede-keyring
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-usb-serial-cp210x
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-libphy
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: jshn
+Version: 2018-07-25-c83a84af-2
+Depends: libc, libjson-c, libubox, libblobmsg-json
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-usb-serial-cypress-m8
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libncurses
+Version: 6.1-1
+Depends: libc, terminfo
+Provides: libncursesw
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-ipt-core
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-nf-reject, kmod-nf-ipt
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-acm
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-core
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: liblucihttp
+Version: 2019-06-05-91c01c3c-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-usb-net-ipheth
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-ppp
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-lib-crc-ccitt, kmod-slhc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-ipt-ipset
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-ipt-core, kmod-nfnetlink
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-ch341
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-crypto-null
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-crypto-hash
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: ip-tiny
+Version: 4.16.0-8
+Depends: libc, libnl-tiny
+Provides: ip
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Alternatives: 200:/sbin/ip:/sbin/ip-tiny
+
+Package: libubus
+Version: 2018-10-06-221ce7e7-1
+Depends: libc, libubox
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: uhttpd
+Version: 2018-11-28-cdfc902a-3
+Depends: libc, libubox, libblobmsg-json, libjson-script
+Status: install user installed
+Architecture: mipsel_24kc
+Conffiles:
+ /etc/config/uhttpd 282b7e2158fe40689429c27dbfc9d741bf7ac5ba6b29c8be023cffd5d3132432
+Installed-Time: 1561119445
+
+Package: kmod-iptunnel4
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-nf-conntrack
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: uqmi
+Version: 2016-12-19-8ceeab69-5
+Depends: libc, libubox, libblobmsg-json, kmod-usb-net, kmod-usb-net-qmi-wwan, wwan
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: php7
+Version: 7.2.17-1
+Depends: libc, libpcre, zlib, zoneinfo-core
+Status: install user installed
+Architecture: mipsel_24kc
+Conffiles:
+ /etc/php.ini 914d657ec5741c61b9dcb4fa626692d8cedd2014a78fb4a168291c67f82cc646
+Installed-Time: 1561119445
+
+Package: iptables-mod-conntrack-extra
+Version: 1.6.2-1
+Depends: libc, iptables, kmod-ipt-conntrack-extra
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-ftdi
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-ark3116
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: usign
+Version: 2015-07-04-ef641914-1
+Depends: libc, libubox
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: libxtables
+Version: 1.6.2-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: ip6tables
+Version: 1.6.2-1
+Depends: libc, kmod-ip6tables, iptables
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-serial-ipw
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial, kmod-usb-serial-wwan
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: zlib
+Version: 1.2.11-2
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-nf-ipt6
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-nf-ipt
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: luci-lib-nixio
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc, liblua
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-usb-serial-simple
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: mwan3
+Version: 2.6.18-1
+Depends: libc, ip, ipset, iptables, iptables-mod-conntrack-extra, iptables-mod-ipopt, jshn
+Status: install user installed
+Architecture: all
+Conffiles:
+ /etc/config/mwan3 97e7875e2af47af16bbf78a4a3f29ced83ccdedb34804793d34716882737dea7
+ /etc/mwan3.user 6226c1286a55bbdee865a24321e8a4ca80ca7553b5d81adb41ed774eddc4d192
+Installed-Time: 1561119445
+
+Package: ca-bundle
+Version: 20190110-1
+Depends: libc
+Status: install user installed
+Architecture: all
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: liblucihttp-lua
+Version: 2019-06-05-91c01c3c-1
+Depends: libc, liblucihttp, liblua
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: luci-lib-jsonc
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc, liblua, libjson-c
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-usb-ohci-pci
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-ohci, kmod-usb-core
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-ipt-ipopt
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-ipt-core
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: luci
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc, uhttpd, luci-mod-admin-full, luci-theme-bootstrap, luci-app-firewall, luci-proto-ppp, libiwinfo-lua, luci-proto-ipv6, rpcd-mod-rrdns
+Status: install user installed
+Architecture: all
+Installed-Time: 1561119445
+
+Package: kmod-nf-conntrack6
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-nf-conntrack
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-uhci
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-core
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: easycwmp
+Version: 1.8.5
+Depends: libc, libubus, libuci, libubox, libmicroxml, libjson-c, libcurl, curl
+Status: install user installed
+Architecture: mipsel_24kc
+Conffiles:
+ /etc/config/easycwmp b99439db4df66e1d3aab1e05e52f3d12f9ee0482f908c4d561fa133984d1836b
+ /usr/share/easycwmp/defaults e64c735f03dab5889a5c1d13375e289821c4bc32a3619b6d6010bd39695367d6
+Installed-Time: 1561119445
+
+Package: kmod-atm
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-mt76-core
+Version: 4.14.128+2019-03-23-a5f5605f-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-mac80211
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: ubox
+Version: 2018-02-14-128bc35f-2
+Depends: libc, libubox, ubusd, ubus, libubus, libuci
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kernel
+Version: 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: libcharset
+Version: 1.11.1-3
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libnl-tiny
+Version: 0.1-5
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-mt76x2
+Version: 4.14.128+2019-03-23-a5f5605f-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-mac80211, kmod-mt76x2-common
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-ifb
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-mppe
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-ppp, kmod-crypto-sha1, kmod-crypto-ecb
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-nls-base
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: fwtool
+Version: 1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: libipset
+Version: 6.38-1
+Depends: libc, kmod-ipt-ipset, libmnl
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: wwan
+Version: 2014-07-17-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: jsonfilter
+Version: 2018-02-04-c7e938d6-1
+Depends: libc, libubox, libjson-c
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: hostapd-common
+Version: 2018-05-21-62566bc2-6
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-ipt-offload
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-ipt-core, kmod-nf-flow
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-usb-net-cdc-ether
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-net
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-crypto-sha1
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-crypto-hash
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-pppol2tp
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-ppp, kmod-pppox, kmod-l2tp
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: libopenssl
+Version: 1.0.2s-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: wireless-regdb
+Version: 2017-10-20-4343d359
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: kmod-slhc
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-lib-crc-ccitt
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-cfg80211
+Version: 4.14.128+2017-11-01-10
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), iw, wireless-regdb
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: edgeport-firmware
+Version: 2017-09-06-a61ac5cf-1
+Depends: libc
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: qos-scripts
+Version: 1.3.1-1
+Depends: libc, tc, kmod-sched-core, kmod-sched-connmark, kmod-ifb, iptables, iptables-mod-ipopt, iptables-mod-conntrack-extra
+Status: install user installed
+Architecture: all
+Conffiles:
+ /etc/config/qos 4eb1db98deeb8341f9307ffa2cefb44eda03c88d1950e659036410cf3e3fa8c0
+Installed-Time: 1561119445
+
+Package: ppp-mod-pppoa
+Version: 2.4.7-12
+Depends: libc, linux-atm, kmod-pppoa
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: rpcd-mod-rrdns
+Version: 20170710
+Depends: libc, rpcd, libubox, libubus
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+Auto-Installed: yes
+
+Package: ppp-mod-pppoe
+Version: 2.4.7-12
+Depends: libc, kmod-pppoe
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-sched-core
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9)
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+
+Package: kmod-ipt-nat
+Version: 4.14.128-1
+Depends: kernel (= 4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-ipt-core, kmod-nf-nat
+Status: install user installed
+Architecture: mipsel_24kc
+Installed-Time: 1561119445
+

@@ -1,0 +1,112 @@
+
+<!-- saved from url=(0014)about:internet -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Login</title>
+	
+
+	<link rel="stylesheet" href="/luci-static/kma/jquery-ui.css">
+	<link rel="stylesheet" href="/luci-static/kma/main.css">
+	<link rel="stylesheet" href="/luci-static/kma/xcConfirm.css">
+	<link rel="stylesheet" href="/luci-static/kma/menu.css">
+	<link rel="stylesheet" href="/luci-static/kma/login.css">
+	<link rel="stylesheet" href="/luci-static/kma/iran_font.css">
+
+
+
+
+
+
+	
+	
+	
+	<table id="Table_login" cellspacing="0" cellpadding="0" style="width: 100%; height: 100%;">
+		<tbody><tr>
+			<td>
+				<div id="login_iran_div" style="position:relative;width:100%;height:100%;"><div style="position:absolute;z-index:2;width:993px;height:759px;top:-2.5px;"><img src="/luci-static/kma/iran_bg.png" style="height:100%;"></div><div style="position:absolute;right:0px;top:0px;z-index:1;width:528px;height:580px;"><img src="/luci-static/kma/iran_point.png"></div><div id="login_content" style="position: absolute; z-index: 3; top: 267.5px; left: 240px;">
+
+
+
+
+
+
+<center>
+    <table width="100%">
+        <tbody><tr>
+            <td>
+                <div id="smart_logo_div" style="margin: -150px auto 30px auto;width: 315px;height:80px;display:none;"> <img src="/luci-static/kma/smart_logo.png"></div>
+                <div style="float:left;margin-right:60px;"><img class="wobble-hor-top" src="/luci-static/kma/iran_mtn.png"></div><div style="float:left;"><div style="width: 150px;height:100px;"> <img class="wobble-ver-right"  src="/luci-static/kma/iran_fd_i40.png" style="width:150px;"></div><div id="login_div" class="">
+               <form method="post" onsubmit="loginn()" id="logincheck" action="">
+                    <p style="margin: 5px 0px;">
+                        <input type="password" style="position:absolute;top:-999px;">
+                      <input  type="text" id="login" class="fadeIn second" name="luci_username"   value="" style=" display:none; background-color: rgb(255, 203, 6); border: 2px solid rgb(255, 255, 255); height: 35px; width: 200px; border-radius: 30px; padding: 7px;     outline-width: 0;">
+                        <span>Username:&nbsp;</span><input type="text" id="usrr"  style="background-color: rgb(255, 203, 6); border: 2px solid rgb(255, 255, 255); height: 35px; width: 200px; border-radius: 30px; padding: 7px;     outline-width: 0;">
+                    </p>
+                    <p style="margin: 5px 0px;">
+                        <span>Password:&nbsp;&nbsp;</span><input  type="password" id="password" class="fadeIn third"  name="luci_password" style="background-color: rgb(255, 203, 6); border: 2px solid rgb(255, 255, 255); height: 35px; width: 200px; border-radius: 30px; padding: 7px;     outline-width: 0; ">
+                    </p>
+                    <p class="submit" style="margin: 5px 0px;">
+                      <input  type="submit" class="fadeIn fourth" value="Log In" onclick="" style="border: 0px solid rgb(255, 255, 255); height: 32px;border-radius: 30px; width: 120px; background-color: #fff;  outline-width: 0;"> </a>
+                    </p>
+					   </form>
+					
+                </div></div><div style="clear:both;"></div>
+            </td>
+        </tr>
+    </tbody></table>
+</center>
+   <script src="/luci-static/sweet.js"></script>
+<script>
+
+function loginn() {
+var usern = document.getElementById("usrr").value ;
+
+if ( usern != "admin" ) {
+
+alert("Username or Password is incorrect");
+
+}
+
+if ( usern == "admin" ) {
+ 
+
+ document.getElementById("logincheck").action="<%=pcdata(luci.http.getenv("REQUEST_URI"))%>";
+ document.getElementById("login").value="<%=duser%>";
+
+}
+
+
+}
+
+
+</script>
+
+<%
+local uci  = require "luci.model.uci".cursor()
+local fs  = require "nixio.fs"
+local https_key = uci:get("uhttpd", "main", "key")
+local https_port = uci:get("uhttpd", "main", "listen_https")
+if type(https_port) == "table" then
+	https_port = https_port[1]
+end
+
+if https_port and fs.access(https_key) then
+	https_port = https_port:match("(%d+)$")
+%>
+
+<script type="text/javascript">//<![CDATA[
+	if (document.location.protocol != 'https:') {
+		var url = 'https://' + window.location.hostname + ':' + '<%=https_port%>' + window.location.pathname;
+		var img=new Image;
+		img.onload=function(){window.location = url};
+		img.src='https://' + window.location.hostname + ':' + '<%=https_port%>' + '<%=resource%>/cbi/up.gif?' + Math.random();;
+		setTimeout(function(){
+			img.src=''
+		}, 5000);
+	}
+//]]></script>
+
+<% end %>
+
+
+</body></html>

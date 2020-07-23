@@ -1,0 +1,19 @@
+<html>
+<body onload="redblood()" >
+<link rel="stylesheet" href="/luci-static/mac.css">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<center>
+<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+ <form method="post" onsubmit="parent.netpref()" action="/luci-static/snmp.php" target="hiddenFrame" > 
+Current Cellular Mode:<br><select class="auto" id="checknetpre" name="cell"><option value="auto" selected >Automatic</option><option value="4g"  >4G Only</option><option value="3g" >3G Only</option><option value="2g" >2G Only</option></select><br><br>
+<input type="submit" value="Save Settings">
+<img style="display:none" id="loopoo" src="/luci-static/load.gif" >
+</form> 
+</center>
+  <script src="/luci-static/vendor/jquery/jquery.min.js"></script>
+  <script src="/luci-static/mac.js"></script>
+  <script src="/luci-static/sweet.js"></script>
+</body>
+</html>

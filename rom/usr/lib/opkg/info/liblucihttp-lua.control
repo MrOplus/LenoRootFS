@@ -1,0 +1,11 @@
+Package: liblucihttp-lua
+Version: 2019-06-05-91c01c3c-1
+Depends: libc, liblucihttp, liblua
+Source: feeds/luci/contrib/package/lucihttp
+License: ISC
+LicenseFiles: LICENSE
+Section: libs
+Maintainer: Jo-Philipp Wich <jo@mein.io>
+Architecture: mipsel_24kc
+Installed-Size: 3566
+Description:  Lua binding for the LuCI HTTP utility library

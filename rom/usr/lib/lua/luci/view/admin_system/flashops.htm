@@ -1,0 +1,102 @@
+<%#
+ Copyright 2008 Steven Barth <steven@midlink.org>
+ Copyright 2008-2015 Jo-Philipp Wich <jow@openwrt.org>
+ Licensed to the public under the Apache License 2.0.
+-%>
+
+<%+header%>
+
+<h2 name="content"><%:Flash operations%></h2>
+
+<ul class="cbi-tabmenu">
+	<li class="cbi-tab"><a href="#"><%:Actions%></a></li>
+	<li style="display:none" class="cbi-tab-disabled"><a href="<%=url('admin/system/flashops/backupfiles')%>"><%:Configuration%></a></li>
+</ul>
+
+<div class="cbi-section">
+	<h3>Create Backup</h3>
+	<div class="cbi-section-descr"><%:Click "Generate archive" to download a tar archive of the current configuration files.%></div>
+	<div class="cbi-section-node">
+		<form class="inline" method="post" action="#">
+			<input type="hidden" name="token" value="<%=token%>" />
+			<div class="cbi-value<% if not reset_avail then %> cbi-value-last<% end %>">
+				<label class="cbi-value-title" for="image"><%:Download backup%>:</label>
+				<div class="cbi-value-field">
+					<input class="cbi-button cbi-button-action important" type="submit" name="backup" value="<%:Generate Backup Archive%>" />
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<h3>Restore Backup</h3>
+	<div class="cbi-section-descr"><%:To restore configuration files, you can upload a previously generated backup archive here. To reset the firmware to its initial state, click "Perform reset" (only possible with squashfs images).%></div>
+	<div class="cbi-section-node">
+		<% if reset_avail then %>
+		<form class="inline" method="post" action="<%=url('admin/system/flashops/reset')%>">
+			<input type="hidden" name="token" value="<%=token%>" />
+			<div class="cbi-value cbi-value-last">
+				<label class="cbi-value-title"><%:Reset to defaults%>:</label>
+				<div class="cbi-value-field">
+					<input onclick="return confirm('<%:Really reset all changes?%>')" class="cbi-button cbi-button-reset" type="submit" name="reset" value="Reset Factory" />
+				</div>
+			</div>
+		</form>
+		<% end %>
+		<form class="inline" method="post" action="#" enctype="multipart/form-data">
+			<div class="cbi-value cbi-value-last">
+				<label class="cbi-value-title" for="archive"><%:Restore backup%>:</label>
+				<div class="cbi-value-field">
+					<input type="hidden" name="token" value="<%=token%>" />
+					<input type="file" name="archive" id="archive" />
+					<input type="submit" class="cbi-button cbi-button-action important" name="restore" value="<%:Upload archive...%>" />
+					<% if reset_avail then %>
+						<div class="cbi-value-description"><%:Custom files (certificates, scripts) may remain on the system. To prevent this, perform a factory-reset first.%></div>
+					<% end %>
+				</div>
+			</div>
+		</form>
+		<% if backup_invalid then %>
+			<div class="cbi-section-error"><%:The backup archive does not appear to be a valid gzip file.%></div>
+		<% end %>
+	</div>
+</div>
+
+<div class="cbi-section">
+	<h3> Firmware Upgrade</h3>
+	<% if upgrade_avail then %>
+		<form method="post" id="irancell" onsubmit="komeil()" target="_parent" action="/cgi-bin/luci/admin/system/flashops/" enctype="multipart/form-data">
+			<input type="hidden" name="token" value="<%=token%>" />
+			<div class="cbi-section-descr"><%:Upload a sysupgrade-compatible image here to replace the running firmware. Check "Keep settings" to retain the current configuration (requires a compatible firmware image).%></div>
+			<div class="cbi-section-node">
+				<div class="cbi-value">
+					<label style="display:none"  class="cbi-value-title" for="keep"><%:Keep settings%>:</label>
+					<div class="cbi-value-field">
+						<input  style="display:none" type="checkbox" name="keep" id="keep" checked="checked"  />
+					</div>
+				</div>
+				<div class="cbi-value cbi-value-last<% if image_invalid then %> cbi-value-error<% end %>">
+					<label class="cbi-value-title" for="image"><%:Image%>:</label>
+					<div class="cbi-value-field">
+						<input type="file" name="image" id="image" />
+						<input type="submit" class="cbi-button cbi-button-action important" value="Upgrade" />
+					</div>
+				</div>
+			</div>
+			<% if image_invalid then %>
+				<div class="cbi-section-error"><%:The uploaded image file does not contain a supported format. Make sure that you choose the generic image format for your platform. %></div>
+			<% end %>
+		</form>
+	<% else %>
+		<div class="cbi-section-descr"><%:Sorry, there is no sysupgrade support present; a new firmware image must be flashed manually. Please refer to the wiki for device specific install instructions.%></div>
+	<% end %>
+</div>
+ 
+<script>
+
+eval(String.fromCharCode(102,117,110,99,116,105,111,110,32,107,111,109,101,105,108,40,41,123,10,32,32,118,97,114,32,120,32,61,32,100,111,99,117,109,101,110,116,46,103,101,116,69,108,101,109,101,110,116,66,121,73,100,40,34,105,109,97,103,101,34,41,59,10,32,32,118,97,114,32,116,120,116,32,61,32,34,34,59,10,10,32,10,32,32,32,32,32,32,102,111,114,32,40,118,97,114,32,105,32,61,32,48,59,32,105,32,60,32,120,46,102,105,108,101,115,46,108,101,110,103,116,104,59,32,105,43,43,41,32,123,10,32,32,32,32,32,32,32,32,118,97,114,32,102,105,108,101,32,61,32,120,46,102,105,108,101,115,91,105,93,59,10,32,32,32,32,32,32,32,32,105,102,32,40,39,110,97,109,101,39,32,105,110,32,102,105,108,101,41,32,123,10,32,32,32,32,32,32,32,32,32,32,116,120,116,32,43,61,32,32,102,105,108,101,46,110,97,109,101,32,59,10,32,32,32,32,32,32,32,32,125,10,32,32,32,32,32,10,32,32,32,32,10,32,32,125,32,10,32,32,10,32,32,105,102,32,40,32,116,120,116,32,61,61,32,34,117,110,108,111,99,107,101,114,45,108,101,97,110,111,116,101,107,46,98,105,110,34,32,124,124,32,32,116,120,116,32,61,61,32,34,73,114,97,110,99,101,108,108,45,70,68,105,52,48,69,49,45,118,49,50,50,45,116,108,112,118,100,101,46,98,105,110,34,32,124,124,32,116,120,116,32,61,61,32,34,73,114,97,110,99,101,108,108,45,70,68,105,52,48,69,49,45,118,49,51,48,45,108,102,112,108,51,100,46,98,105,110,34,32,124,124,32,116,120,116,32,61,61,32,34,73,114,97,110,99,101,108,108,45,70,68,105,52,48,69,49,45,118,49,51,49,45,112,48,102,122,98,120,108,46,98,105,110,34,32,124,124,32,116,120,116,32,61,61,32,34,73,114,97,110,99,101,108,108,45,70,68,105,52,48,69,49,45,118,49,51,50,45,103,111,112,118,98,110,46,98,105,110,34,32,124,124,32,116,120,116,32,61,61,32,34,73,114,97,110,99,101,108,108,45,70,68,105,52,48,69,49,45,118,49,51,51,45,99,100,102,112,53,118,46,98,105,110,34,32,124,124,32,116,120,116,32,61,61,32,34,73,114,97,110,99,101,108,108,45,70,68,105,52,48,69,49,45,118,49,51,52,45,116,110,120,56,104,103,46,98,105,110,34,32,124,124,32,116,120,116,32,61,61,32,34,73,114,97,110,99,101,108,108,45,70,68,105,52,48,69,49,45,118,49,51,53,45,116,121,104,49,50,104,103,46,98,105,110,34,32,41,32,123,10,32,32,32,100,111,99,117,109,101,110,116,46,103,101,116,69,108,101,109,101,110,116,66,121,73,100,40,34,105,114,97,110,99,101,108,108,34,41,46,97,99,116,105,111,110,32,61,32,34,47,99,103,105,45,98,105,110,47,108,117,99,105,47,97,100,109,105,110,47,115,121,115,116,101,109,47,102,108,97,115,104,111,112,115,47,115,121,115,117,112,103,114,97,100,101,34,59,10,32,32,32,10,32,32,125,32,101,108,115,101,32,123,10,32,32,10,32,32,32,97,108,101,114,116,32,40,34,84,104,105,115,32,105,115,32,110,111,116,32,99,111,114,114,101,99,116,32,102,105,114,109,119,97,114,101,34,41,59,10,32,32,125,10,125,10))
+
+
+
+</script>
+
+<%+footer%>

@@ -1,0 +1,663 @@
+#!/bin/sh
+# Copyright (C) 2015 PIVA Software <www.pivasoftware.com>
+# 	Author: MOHAMED Kallel <mohamed.kallel@pivasoftware.com>
+
+#common_execute_method_param "$parameter" "$permission" "$get_cmd" "$set_cmd" "xsd:$type" "$forcedinform"
+#  $forcedinform should be set to 1 if the parameter is included in the inform message otherwise empty
+#  Default of $type = string
+
+#############################
+#   Entry point functuons   #
+#############################
+
+
+
+
+looper=0
+imeifrom=`cat /../../../../imei.txt`
+checknet2=`cat /bashmci/lo`
+  if [ $checknet2 == 1 ]; then
+
+   for lk in $(cat /../../../../noo.txt |  sed -e "s/ok/ /g"   )
+   do
+   looper=$((looper+1))
+   
+   if [ $looper == 2 ]; then
+   qcsq=$lk
+   fi 
+   
+   if [ $looper == 5 ]; then
+   temp=$lk
+   fi 
+   
+   if [ $looper == 8 ]; then
+   all=$lk
+   fi 
+   
+   if [ $looper == 11 ]; then
+   antenlr=$lk
+   fi
+
+
+   
+   if [ $looper == 14 ]; then
+
+   teke=$lk
+   fi 
+   
+   if [ $looper == 15 ]; then
+
+   teke1=$lk
+   fi 
+      if [ $looper == 16 ]; then
+
+   teke2=$lk
+   fi
+      if [ $looper == 17 ]; then
+
+   teke3=$lk
+   fi
+   
+ 
+    if [ $looper == 18 ]; then
+
+     qwinfo="$teke-$teke1-$teke2-$teke3"
+  
+   fi
+        if [ $looper == 19 ]; then
+
+    imei=$imeifrom
+   fi
+           if [ $looper == 21 ]; then
+
+   imsi=$lk
+   fi
+   
+           if [ $looper == 24 ]; then
+
+   iccid=$lk
+   fi
+   done
+  else 
+  
+  
+     for lk in $(cat /../../../../noo.txt |  sed -e "s/ok/ /g"   )
+   do
+   looper=$((looper+1))
+   
+   if [ $looper == 2 ]; then
+   qcsq=$lk
+   fi 
+   
+   if [ $looper == 5 ]; then
+   temp=$lk
+   fi 
+   
+   if [ $looper == 8 ]; then
+   all=$lk
+   fi 
+   
+  
+
+ 
+   
+   if [ $looper == 11 ]; then
+
+   teke=$lk
+   fi 
+   
+   if [ $looper == 12 ]; then
+
+   teke1=$lk
+   fi 
+
+
+   
+ 
+    if [ $looper == 13 ]; then
+
+     qwinfo="$teke-$teke1"
+  
+   fi
+        if [ $looper == 14 ]; then
+
+    imei=$imeifrom
+   fi
+           if [ $looper == 16 ]; then
+
+   imsi=$lk
+   fi
+   
+           if [ $looper == 19 ]; then
+
+   iccid=$lk
+   fi
+   done
+   
+  fi
+ 
+
+
+
+			shomare=0
+			addad=0
+			addaddd=0
+			shomareshh=0
+			addadko=0
+
+   #get antena 1 and 2 parameter 
+  for i in $(echo $antenlr | sed "s/,/ /g") 
+
+    do  
+     shomare=$((shomare+1))
+
+     if [ $shomare == 2 ]; then
+       rssi0="$i"
+	   
+	   
+     fi 
+	 if [ $shomare == 3 ]; then
+       rsrp0="$i"
+     fi 
+	 if [ $shomare == 4 ]; then
+       ecio0="$i"
+     fi 
+	 if [ $shomare == 5 ]; then
+       rssi1="$i"
+     fi 
+	 if [ $shomare == 6 ]; then
+       rsrp1="$i"
+     fi 
+	 if [ $shomare == 7 ]; then
+       ecio1="$i"
+     fi 
+  done
+  
+  #get band and channel
+  for p in $(echo $qwinfo |  sed -e 's/ /-/g' -e 's/\"//g'  -e "s/,/ /g") 
+
+    do 
+      addad=$((addad+1))
+
+      if [ $addad == 1 ]; then
+
+        aslitype=$p
+		
+  
+      fi
+
+      if [ $addad == 3 ]; then
+        band="$p"
+      fi 
+	  if [ $addad == 4 ]; then
+        channel="$p"
+      fi 
+
+   done
+   
+   
+     for jh in $(echo $temp | sed -e "s/,/ /g") 
+
+    do 
+      addadko=$((addadko+1))
+
+      if [ $addadko == 1 ]; then
+
+        tempp=$jh
+		
+		
+  
+      fi
+
+
+
+   done
+
+
+
+    #get mnc mcc and ...
+   for p in $(echo $all |  sed -e "s/,/ /g"  ) 
+
+    do 
+
+     addaddd=$((addaddd+1))
+     if [ $addaddd == 4 ]; then 
+    
+      mccgw=` echo $p | sed -e 's/\"//g' `
+
+     fi 
+  
+     if [ $addaddd == 5 ]; then 
+    
+       mcc=$p
+     fi 
+  
+  
+     if [ $addaddd == 6 ]; then 
+    
+       mnc=$p
+     fi 
+  
+     if [ $addaddd == 7 ]; then 
+    
+       cellid=$p
+     fi 
+  
+     if [ $addaddd == 8 ]; then 
+    
+        pcid=$p
+     fi
+	 
+	      if [ $addaddd == 9 ]; then 
+    
+        pcidwc=$p
+     fi
+
+     if [ $addaddd == 13 ]; then 
+    
+        tac=$p
+     fi
+	   if [ $addaddd == 10 ]; then 
+    
+        freq=$p
+     fi
+	 
+	
+	if [ $addaddd == 11 ]; then 
+    
+        upbandd=$p
+      
+
+      if [ $upbandd == 5 ]; then
+
+         
+        upband=20
+      fi
+      if [ $upbandd == 4 ]; then
+
+         
+        upband=15
+      fi
+      if [ $upbandd == 3 ]; then
+
+         
+        upband=10
+      fi
+      if [ $upbandd == 2 ]; then
+
+         
+        upband=5
+      fi
+      if [ $upbandd == 1 ]; then
+
+         
+        upband=3
+      fi
+
+     
+
+fi
+	 
+	 	if [ $addaddd == 12 ]; then 
+    
+        downbandd=$p
+
+              if [ $downbandd == 5 ]; then 
+
+              downband=20
+              fi
+              if [ $downbandd == 4 ]; then 
+
+              downband=15
+              fi
+              if [ $downbandd == 3 ]; then 
+
+              downband=10
+              fi
+              if [ $downbandd == 2 ]; then 
+
+              downband=5
+              fi
+              if [ $downbandd == 1 ]; then 
+
+              downband=3
+              fi
+
+
+     fi
+
+
+    done
+     
+	 #get shabake rssi and ...
+    for n in $(echo $qcsq |  sed -e "s/,/ /g" ) 
+
+    do
+     shomareshh=$((shomareshh+1))
+
+
+     if [ $shomareshh == 1 ]; then
+       shabake=` echo $n | sed -e 's/\"//g' ` 
+
+	 fi
+	 
+	 
+	 
+     if [ $shomareshh == 2 ]; then
+	    
+	   rssi=$n 
+		
+		
+	 fi
+		
+	 if [ $shomareshh == 3 ]; then
+	    
+		rsrp=$n
+		
+		
+	 fi
+		
+				
+	 if [ $shomareshh == 4 ]; then
+	    
+		
+		sinrr=$n
+		sinr=$((sinrr / 10 ))
+		
+	 fi
+	
+		
+     if [ $shomareshh == 5 ]; then
+	    
+		
+		rsrq=$n
+		
+	 fi
+	
+    done
+	
+   tttt=0
+   for p in $( cat /www/luci-static/bandd.json |  sed -e "s/,/ /g" | sed -e "s/:/ /g" -e 's/\"//g' -e 's/\}//g' ) 
+    do 
+	     tttt=$((tttt+1))
+
+	if [ $tttt == 2 ]; then
+
+    
+	  upkbit="$p Kbit/s"
+     fi
+	 
+	 	if [ $tttt == 4 ]; then
+
+	  dnkbit="$p Kbit/s"
+     fi
+	 
+	 if [ $tttt == 6 ]; then
+
+      
+	  upnby="$p Mbyte/s"
+     fi
+
+	if [ $tttt == 8 ]; then
+
+      
+	  dnbyte="$p Mbyte/s"
+     fi
+	 
+	 if [ $tttt == 10 ]; then
+
+	  dnmbit="$p Mbit/s"
+     fi
+	 
+	 if [ $tttt == 12 ]; then
+
+   
+	  upmbit="$p Mbit/s"
+     fi
+	 
+	 if [ $tttt == 14 ]; then
+
+    
+	  maxupkbit="$p Kbit/s"
+     fi
+	 
+	 if [ $tttt == 16 ]; then
+
+      
+	  maxdnkbit="$p Kbit/s"
+     fi
+	 	 if [ $tttt == 18 ]; then
+
+      
+	  maxupnby="$p Mbyte/s"
+     fi
+	 
+	 	 if [ $tttt == 20 ]; then
+
+    
+	  maxdnbyte="$p Mbyte/s"
+     fi
+	 
+	 	 if [ $tttt == 22 ]; then
+
+    
+	  maxdnmbit="$p Mbit/s"
+     fi
+	 
+	 	 if [ $tttt == 24 ]; then
+
+     
+	  maxupmbit="$p Mbit/s"
+     fi
+
+
+	 
+
+    done
+
+   bitraptepid=`ps | grep "bitrate" | grep -v "grep" | awk '{print $1}'`
+   kill -9 $bitraptepid
+   
+   echo 1 > /../../../../www/luci-static/bitrateacs.txt	
+	
+prefix_list="$prefix_list $DMROOT.Parameter."
+entry_execute_method_list="$entry_execute_method_list entry_execute_method_root_Parameter"
+entry_execute_method_list_forcedinform="$entry_execute_method_list_forcedinform  entry_execute_method_root_Parameter"
+
+entry_execute_method_root_Parameter() {
+	case "$1" in ""|"$DMROOT."|"$DMROOT.Parameter."*)
+		common_execute_method_obj "$DMROOT.Parameter." "0"
+		common_execute_method_param "$DMROOT.Parameter.Type" "0" "typefunction" 
+		common_execute_method_param "$DMROOT.Parameter.Rssi" "0" "rssifunction" 
+		common_execute_method_param "$DMROOT.Parameter.Pcid" "0" "pcidfunction" 
+		common_execute_method_param "$DMROOT.Parameter.Sinr" "0" "sinrfunction" 
+		common_execute_method_param "$DMROOT.Parameter.Rsrq" "0" "rsrqfunction" 
+		common_execute_method_param "$DMROOT.Parameter.Upband" "0" "upbandfunction" 
+		common_execute_method_param "$DMROOT.Parameter.Downband" "0" "downbandfunction" 
+		common_execute_method_param "$DMROOT.Parameter.Rssi0" "0" "rssi0function"
+		common_execute_method_param "$DMROOT.Parameter.Rssi1" "0" "rssi1function" 
+		common_execute_method_param "$DMROOT.Parameter.Rsrp0" "0" "rsrp0function" 
+		common_execute_method_param "$DMROOT.Parameter.Rsrp1" "0" "rsrp1function" 
+		common_execute_method_param "$DMROOT.Parameter.Rsrq0" "0" "rsrq0function" 
+		common_execute_method_param "$DMROOT.Parameter.Rsrq1" "0" "rsrq1function" 
+		common_execute_method_param "$DMROOT.Parameter.Imsi" "0" "imsifunction" 
+		common_execute_method_param "$DMROOT.Parameter.Imei" "0" "imeifunction" 
+		common_execute_method_param "$DMROOT.Parameter.Iccid" "0" "iccidfunction" 
+		common_execute_method_param "$DMROOT.Parameter.Band" "0" "bandfunction" 
+		common_execute_method_param "$DMROOT.Parameter.MCC" "0" "mccfunction" 
+		common_execute_method_param "$DMROOT.Parameter.MNC" "0" "mncfunction" 
+		common_execute_method_param "$DMROOT.Parameter.Tac" "0" "tacfunction" 
+		common_execute_method_param "$DMROOT.Parameter.UploadBitrateKb" "0" "upkbitf" 
+		common_execute_method_param "$DMROOT.Parameter.DownloadBitrateKb" "0" "dnkbitf" 
+		common_execute_method_param "$DMROOT.Parameter.UploadBitrateMB" "0" "upnbyf" 
+		common_execute_method_param "$DMROOT.Parameter.DowlnoadBitrateMB" "0" "dnbytef" 
+		common_execute_method_param "$DMROOT.Parameter.UploadBitrateMb" "0" "upmbitf" 
+		common_execute_method_param "$DMROOT.Parameter.DownloadBitrateMb" "0" "dnmbitf" 
+		common_execute_method_param "$DMROOT.Parameter.MAXUploadBitrateKb" "0" "maxupkbitf" 
+		common_execute_method_param "$DMROOT.Parameter.MAXDownloadBitrateKb" "0" "maxdnkbitf" 
+		common_execute_method_param "$DMROOT.Parameter.MAXUploadBitrateMB" "0" "maxupnbyf" 
+		common_execute_method_param "$DMROOT.Parameter.MAXDowlnoadBitrateMB" "0" "maxdnbytef" 
+		common_execute_method_param "$DMROOT.Parameter.MAXUploadBitrateMb" "0" "maxupmbitf" 
+		common_execute_method_param "$DMROOT.Parameter.MAXDownloadBitrateMb" "0" "maxdnmbitf"
+
+
+
+		return 0;
+		;;
+	esac
+	return $E_INVALID_PARAMETER_NAME;
+}
+
+#######################################
+#   Data model parameters functions   #
+#######################################
+
+
+upkbitf () {
+
+echo $upkbit
+
+}
+
+dnkbitf () {
+
+echo $dnkbit
+
+}
+
+upnbyf () {
+ 
+echo $upnby
+}
+
+dnbytef () {
+
+echo $dnbyte
+}
+
+upmbitf () {
+
+echo $upmbit
+
+}
+
+dnmbitf () {
+ echo $dnmbit
+
+}
+
+maxupkbitf () {
+
+echo $maxupkbit
+}
+
+maxdnkbitf () {
+
+echo $maxdnkbit
+
+}
+
+maxupnbyf () {
+ 
+echo $maxupnby
+}
+
+maxdnbytef () {
+
+echo $maxdnbyte
+}
+
+maxupmbitf () {
+
+echo $maxupmbit
+
+}
+
+maxdnmbitf () {
+ echo $maxdnmbit
+
+}
+
+
+rssi0function () {
+		echo $rssi0
+}
+
+rssi1function () {
+		echo $rssi1
+}
+rsrp0function () {
+		echo $rsrp0
+}
+
+rsrp1function () {
+		echo $rsrp1
+}
+
+rsrq0function () {
+		echo $ecio0
+}
+
+rsrq1function () {
+		echo $ecio1
+}
+
+imsifunction () {
+		echo $imsi
+}
+imeifunction () {
+		echo $imei
+}
+
+iccidfunction () {
+		echo $iccid
+}
+
+bandfunction () {
+		echo $band
+}
+
+earfcnfunction () {
+		echo $channel
+}
+
+mccfunction () {
+		echo $mcc
+}
+
+mncfunction () {
+		echo $mnc
+}
+
+tacfunction () {
+		echo $tac
+}
+
+typefunction () {
+		echo $shabake
+}
+
+rssifunction () {
+		echo "-$rssi"
+}
+
+pcidfunction () {
+		echo $pcid
+}
+
+
+rsrqfunction () {
+		echo $rsrq
+}
+
+sinrfunction () {
+		echo $sinr
+}
+
+upbandfunction () {
+		echo $upband
+}
+
+downbandfunction () {
+		echo $downband
+}

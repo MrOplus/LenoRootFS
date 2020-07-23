@@ -1,0 +1,10 @@
+Package: ppp-mod-pppoa
+Version: 2.4.7-12
+Depends: libc, linux-atm, kmod-pppoa
+Source: package/network/services/ppp
+License: BSD-4-Clause
+Section: net
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: mipsel_24kc
+Installed-Size: 6413
+Description:  This package contains a PPPoA (PPP over ATM) plugin for ppp.

@@ -1,0 +1,9 @@
+Package: kmod-usb-serial-ark3116
+Version: 4.14.128-1
+Depends: kernel (=4.14.128-1-270c46c6176f2d0bee8e3f9c0fcf9de9), kmod-usb-serial
+Source: package/kernel/linux
+License: GPL-2.0
+Section: kernel
+Architecture: mipsel_24kc
+Installed-Size: 3981
+Description:  Kernel support for ArkMicroChips ARK3116 USB-to-Serial converters

@@ -1,0 +1,22 @@
+
+config wifi-device 'radio0'
+	option type 'mac80211'
+	option hwmode '11g'
+	option path 'platform/10300000.wmac'
+	option channel 'auto'
+	option htmode 'HT40'
+	option txpower '23'
+	option country 'US'
+	option noscan '1'
+	option legacy_rates '1'
+
+config wifi-iface 'default_radio0'
+	option device 'radio0'
+	option network 'lan'
+	option mode 'ap'
+	option ssid 'IRANCELL-FD-I40-E1-A5A8'
+	option key '33a5f8a8'
+	option encryption 'psk2+ccmp'
+	option wpa_disable_eapol_key_retries '0'
+	option wps_pushbutton '0'
+

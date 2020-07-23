@@ -1,0 +1,2 @@
+/etc/modules.d/usb-serial-ark3116
+/lib/modules/4.14.128/ark3116.ko

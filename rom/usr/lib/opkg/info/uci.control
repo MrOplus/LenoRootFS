@@ -1,0 +1,10 @@
+Package: uci
+Version: 2019-05-17-f199b961-1
+Depends: libc, libuci
+Source: package/system/uci
+License: LGPL-2.1
+Section: base
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: mipsel_24kc
+Installed-Size: 6493
+Description:  Utility for the Unified Configuration Interface (UCI)

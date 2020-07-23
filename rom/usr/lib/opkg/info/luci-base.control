@@ -1,0 +1,9 @@
+Package: luci-base
+Version: git-19.170.32094-4d6d8bc-1
+Depends: libc, lua, luci-lib-nixio, luci-lib-ip, rpcd, libubus-lua, luci-lib-jsonc, liblucihttp-lua
+Source: feeds/luci/modules/luci-base
+License: MIT
+Section: luci
+Architecture: mipsel_24kc
+Installed-Size: 2191561
+Description:  LuCI core libraries

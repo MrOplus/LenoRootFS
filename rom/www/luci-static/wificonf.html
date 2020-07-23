@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+<meta name="viewport" content="initial-scale=1.0">
+<link rel="stylesheet" href="/luci-static/mac.css">
+<link rel="stylesheet" href="/luci-static/wificonf.css">
+<link rel="stylesheet" href="/luci-static/bootstrap/cascade.css">
+<meta http-equiv="cache-control" content="no-cache" />
+<center>
+<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+<form method="post" onsubmit="wificonf()" action="/luci-static/wificonf.php" target="hiddenFrame">
+<br><br>
+<div class="row">
+<div class="column" >
+<label>Wi-Fi Enable/Disable </label><select id="wifil" name="wifil"><option value="enable" selected>Enable</option><option value="disable">Disable</option></select><br><br>
+<label>SSID </label><input id="ssid" name="ssid"  pattern="^([0-9,a-z,@,!,#,$,%,^,&,*,_,\-,A-Z]{8,100})" type="text" value=""  required/><br><br> 
+<label>Mode </label><select id="modeo" name="modeo"><option value="bgn">b/g/n</option><option value="bg">b/g</option></select><br><br> 
+<label>Channel </label> <select id="channel"  name="channel"><option value="auto">auto</option><option value="1">1 (2412 MHz)</option><option value="2">2 (2417 MHz)</option><option value="3">3 (2422 MHz)</option><option value="4">4 (2427 MHz)</option><option value="5">5 (2432 MHz)</option><option value="6">6 (2437 MHz)</option><option value="7">7 (2442 MHz)</option><option value="8">8 (2447 MHz)</option><option value="9">9 (2452 MHz)</option><option value="10">10 (2457 MHz)</option><option value="11" selected>11 (2462 MHz)</option></select>
+<br><br><label>  Width</label> <select id="width" name="width" id="width"><option value="HT20">20 MHz</option><option value="HT40">40 MHz</option></select><br><br> 
+</div>
+<div class="column" >
+<label>Encryption </label><select id="encryption" name="encryption"><option value="psk">WPA-PSK</option><option value="psk2">WPA2-PSK</option><option value="psk2+ccmp">WPA-PSK/WPA2-PSK Mixed Mode</option></select><br><br> 
+<label>TX-Power </label><select id="txpower" name="txpower"><option value="23">High</option><option value="20">Midrange</option><option value="15">Low</option></select><br><br> 
+<label>Password </label><input  id="passwifi" name="passwifi"   pattern="^([0-9,a-z,@,!,#,$,%,^,&,*,_,-,A-Z]{8,20})" type="password" class="cbi-input-password" value="" required><div class="cbi-button cbi-button-neutral" title="Reveal/hide password" onclick="showpass()">*</div><br><br>
+<input type="checkbox" name="wpsname" value="1" id="switch3" switch="bool"  />
+<label for="switch3" data-on-label="wps-on" data-off-label="WPS off"></label></br>
+<input type="checkbox" name="hooden" value="1" id="switch4" switch="bool"  />
+<label for="switch4" data-on-label="Hidden Wi-Fi on" data-off-label="Hidden Wi-Fi off"></label>
+</div>
+</div>
+<input type="submit" value="Save & Apply">
+<input type="reset" value="Reset"> 
+</form> 
+</center>
+<script>
+
+
+  document.getElementById("modeo").value ="bgn";
+  document.getElementById("ssid").value ="ML141_408877";
+  document.getElementById("channel").value ="8";
+  document.getElementById("passwifi").value ="3c2c008899";
+  document.getElementById("width").value ="HT20";
+  document.getElementById("encryption").value ="psk2";
+  document.getElementById("wifil").value ="enable";
+  document.getElementById("switch4").checked ="";
+   document.getElementById("switch3").checked ="true";
+
+
+</script>
+  <script src="/luci-static/vendor/jquery/jquery.min.js"></script>
+  <script src="/luci-static/mac.js"></script>
+  <script src="/luci-static/sweet.js"></script>
+</body>
+</html>

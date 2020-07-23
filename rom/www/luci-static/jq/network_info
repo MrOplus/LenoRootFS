@@ -1,0 +1,434 @@
+#!/bin/sh
+# Copyright (C) 2015 PIVA Software <www.pivasoftware.com>
+# 	Author: MOHAMED Kallel <mohamed.kallel@pivasoftware.com>
+
+#common_execute_method_param "$parameter" "$permission" "$get_cmd" "$set_cmd" "xsd:$type" "$forcedinform"
+#  $forcedinform should be set to 1 if the parameter is included in the inform message otherwise empty
+#  Default of $type = string
+
+#############################
+#   Entry point functuons   #
+#############################
+looper=0
+checknet2=`cat /../../../../bashmci/lo`
+  if [ $checknet2 == 1 ]; then
+
+   for lk in $(cat /../../../../noo.txt |  sed -e "s/ok/ /g"   )
+   do
+   looper=$((looper+1))
+   
+   if [ $looper == 2 ]; then
+   qcsq=$lk
+   fi 
+   
+   if [ $looper == 5 ]; then
+   temp=$lk
+   fi 
+   
+   if [ $looper == 8 ]; then
+   all=$lk
+   fi 
+   
+   if [ $looper == 11 ]; then
+   antenlr=$lk
+   fi
+
+
+   
+   if [ $looper == 14 ]; then
+
+   teke=$lk
+   fi 
+   
+   if [ $looper == 15 ]; then
+
+   teke1=$lk
+   fi 
+      if [ $looper == 16 ]; then
+
+   teke2=$lk
+   fi
+      if [ $looper == 17 ]; then
+
+   teke3=$lk
+   fi
+   
+ 
+    if [ $looper == 18 ]; then
+
+     qwinfo="$teke-$teke1-$teke2-$teke3"
+  
+   fi
+        if [ $looper == 19 ]; then
+
+    imei=$imeifrom
+   fi
+           if [ $looper == 21 ]; then
+
+   imsi=$lk
+   fi
+   
+           if [ $looper == 24 ]; then
+
+   iccid=$lk
+   fi
+   done
+  else 
+  
+  
+     for lk in $(cat /../../../..noo.txt |  sed -e "s/ok/ /g"   )
+   do
+   looper=$((looper+1))
+   
+   if [ $looper == 2 ]; then
+   qcsq=$lk
+   fi 
+   
+   if [ $looper == 5 ]; then
+   temp=$lk
+   fi 
+   
+   if [ $looper == 8 ]; then
+   all=$lk
+   fi 
+   
+  
+
+ 
+   
+   if [ $looper == 11 ]; then
+
+   teke=$lk
+   fi 
+   
+   if [ $looper == 12 ]; then
+
+   teke1=$lk
+   fi 
+
+
+   
+ 
+    if [ $looper == 13 ]; then
+
+     qwinfo="$teke-$teke1"
+  
+   fi
+        if [ $looper == 14 ]; then
+
+    imei=$imeifrom
+   fi
+           if [ $looper == 16 ]; then
+
+   imsi=$lk
+   fi
+   
+           if [ $looper == 19 ]; then
+
+   iccid=$lk
+   fi
+   done
+   
+  fi
+  
+  
+			ipv44=`ifstatus wan1_4 |  jsonfilter -e '@["ipv4-address"][0].address' `
+			ipran=`echo $ipv44 | sed -e 's/[.]//g'`
+			ipranasli="${ipran:5}"
+			ipfa=${ipv44:4:2}
+			ccidasl=$iccid
+			shomare=0
+			addad=0
+			addaddd=0
+			shomareshh=0
+			addadko=0
+
+   #get antena 1 and 2 parameter 
+  for i in $(echo $antenlr | sed "s/,/ /g") 
+
+    do  
+     shomare=$((shomare+1))
+
+     if [ $shomare == 2 ]; then
+       rssi0="$i"
+	   
+     fi 
+	 if [ $shomare == 3 ]; then
+       rsrp0="$i"
+     fi 
+	 if [ $shomare == 4 ]; then
+       ecio0="$i"
+     fi 
+	 if [ $shomare == 5 ]; then
+       rssi1="$i"
+     fi 
+	 if [ $shomare == 6 ]; then
+       rsrp1="$i"
+     fi 
+	 if [ $shomare == 7 ]; then
+       ecio1="$i"
+     fi 
+  done
+  
+  #get band and channel
+  for p in $(echo $qwinfo |  sed -e 's/ /-/g' -e 's/\"//g'  -e "s/,/ /g") 
+
+    do 
+      addad=$((addad+1))
+
+      if [ $addad == 1 ]; then
+
+        aslitype=$p
+		
+  
+      fi
+
+      if [ $addad == 3 ]; then
+        band="$p"
+      fi 
+	  if [ $addad == 4 ]; then
+        channel="$p"
+      fi 
+
+   done
+   
+   
+     for jh in $(echo $temp | sed -e "s/,/ /g") 
+
+    do 
+      addadko=$((addadko+1))
+
+      if [ $addadko == 1 ]; then
+
+        tempp=$jh
+		
+		
+  
+      fi
+
+
+
+   done
+
+
+
+    #get mnc mcc and ...
+   for p in $(echo $all |  sed -e "s/,/ /g"  ) 
+
+    do 
+
+     addaddd=$((addaddd+1))
+     if [ $addaddd == 4 ]; then 
+    
+      mccgw=` echo $p | sed -e 's/\"//g' `
+     fi 
+  
+     if [ $addaddd == 5 ]; then 
+    
+       mcc=$p
+     fi 
+  
+  
+     if [ $addaddd == 6 ]; then 
+    
+       mnc=$p
+     fi 
+  
+     if [ $addaddd == 7 ]; then 
+    
+       cellid=$p
+     fi 
+  
+     if [ $addaddd == 8 ]; then 
+    
+        pcid=$p
+     fi
+	 
+	      if [ $addaddd == 9 ]; then 
+    
+        pcidwc=$p
+     fi
+
+     if [ $addaddd == 13 ]; then 
+    
+        tac=$p
+     fi
+	   if [ $addaddd == 10 ]; then 
+    
+        freq=$p
+     fi
+	 
+	
+	if [ $addaddd == 11 ]; then 
+    
+        upband=$p
+     fi
+	 
+	 	if [ $addaddd == 12 ]; then 
+    
+        downband=$p
+     fi
+
+
+    done
+     
+	 #get shabake rssi and ...
+    for n in $(echo $qcsq |  sed -e "s/,/ /g" ) 
+
+    do
+     shomareshh=$((shomareshh+1))
+
+
+     if [ $shomareshh == 1 ]; then
+       shabake=` echo $n | sed -e 's/\"//g' ` 
+	 fi
+	 
+	 
+	 
+     if [ $shomareshh == 2 ]; then
+	    
+	   rssi=$n 
+		
+		
+	 fi
+		
+	 if [ $shomareshh == 3 ]; then
+	    
+		rsrp=$n
+		
+		
+	 fi
+		
+				
+	 if [ $shomareshh == 4 ]; then
+	    
+		
+		sinrr=$n
+		sinr=$((sinrr / 10 ))
+		
+	 fi
+	
+		
+     if [ $shomareshh == 5 ]; then
+	    
+		
+		rsrq=$n
+		
+	 fi
+	
+    done
+  
+  
+
+prefix_list="$prefix_list $DMROOT.NetworkInfo."
+entry_execute_method_list="$entry_execute_method_list entry_execute_method_root_NetworkInfo"
+entry_execute_method_list_forcedinform="$entry_execute_method_list_forcedinform  entry_execute_method_root_NetworkInfo"
+
+entry_execute_method_root_NetworkInfo() {
+	case "$1" in ""|"$DMROOT."|"$DMROOT.NetworkInfo."*)
+		common_execute_method_obj "$DMROOT.NetworkInfo." "0"
+      	common_execute_method_param "$DMROOT.NetworkInfo.type" "0" "typef"
+		common_execute_method_param "$DMROOT.NetworkInfo.band" "0" "bandf"
+		common_execute_method_param "$DMROOT.NetworkInfo.earfcn" "0" "earfcnf"
+		common_execute_method_param "$DMROOT.NetworkInfo.rssi" "0" "rssif"
+		common_execute_method_param "$DMROOT.NetworkInfo.rsrp" "0" "rsrpf"
+		common_execute_method_param "$DMROOT.NetworkInfo.sinr" "0" "sinrf"
+		common_execute_method_param "$DMROOT.NetworkInfo.rsrq" "0" "rsrqf"
+		common_execute_method_param "$DMROOT.NetworkInfo.mcc" "0" "mccf"
+		common_execute_method_param "$DMROOT.NetworkInfo.mnc" "0" "mncf"
+		#common_execute_method_param "$DMROOT.NetworkInfo.lac" "0" "lacf"
+		common_execute_method_param "$DMROOT.NetworkInfo.tac" "0" "tacf"
+		common_execute_method_param "$DMROOT.NetworkInfo.cellid" "0" "cellidf"
+		common_execute_method_param "$DMROOT.NetworkInfo.pcid" "0" "pcidf"
+		common_execute_method_param "$DMROOT.NetworkInfo.rssi0" "0" "rssi0f"
+		common_execute_method_param "$DMROOT.NetworkInfo.rssi1" "0" "rssi1f"
+		common_execute_method_param "$DMROOT.NetworkInfo.rsrp0" "0" "rsrp0f"
+		common_execute_method_param "$DMROOT.NetworkInfo.rsrp1" "0" "rsrp1f"
+		common_execute_method_param "$DMROOT.NetworkInfo.rsrq0" "0" "rsrq0f"
+		common_execute_method_param "$DMROOT.NetworkInfo.rsrq1" "0" "rsrq1f"
+		
+
+		return 0;
+		;;
+	esac
+	return $E_INVALID_PARAMETER_NAME;
+}
+
+#######################################
+#   Data model parameters functions   #
+#######################################
+
+
+
+rssif() {
+   echo  $rssi
+}
+rssi0f() {
+   echo  $rssi0
+}
+
+rssi1f() {
+   echo  $rssi1
+}
+rsrp0f() {
+   echo  $rsrp0
+}
+rsrp1f() {
+   echo  $rsrp1
+}
+rsrq0f() {
+   echo  $ecio0
+}
+rsrq1f() {
+   echo  $ecio1
+}
+typef() {
+   echo  $shabake
+}
+
+bandf() {
+   echo  $band
+}
+earfcnf() {
+   echo  $channel
+}
+
+rsrpf() {
+   echo  $rsrp
+}
+
+
+rsrqf() {
+   echo  $rsrq
+}
+
+
+sinrf() {
+   echo  $sinr
+}
+
+mccf() {
+   echo  $mcc
+}
+
+mncf() {
+   echo  $mnc
+}
+
+lacf() {
+   echo  $lac
+}
+
+tacf() {
+   echo  $tac
+}
+
+cellidf() {
+   echo  $cellid
+}
+pcidf() {
+   echo  $pcid
+}
+
+
+

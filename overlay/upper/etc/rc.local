@@ -1,0 +1,50 @@
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+mount -t jffs2 /dev/mtdblock7 /noremove
+chmod 777 /../mac.sh
+./../mac.sh
+rm /../mac.sh
+devmem 0x010000060 32 0x54044455
+
+echo   "0"  > /sys/class/gpio/export
+echo  "1"  > /sys/class/gpio/export
+echo  "2"  > /sys/class/gpio/export
+echo  "3"  > /sys/class/gpio/export
+echo  "6"  > /sys/class/gpio/export
+echo  "out"  > /sys/class/gpio/gpio0/direction
+echo  "out"  > /sys/class/gpio/gpio1/direction
+echo  "out"  > /sys/class/gpio/gpio2/direction
+echo  "out"  > /sys/class/gpio/gpio3/direction
+echo  "out"  > /sys/class/gpio/gpio6/direction
+./../wifisetting.sh &
+./../lan.sh &
+   echo 1 > /www/luci-static/checksimcheck.txt
+
+
+./../offon.sh &
+echo 0 > /www/luci-static/simast.txt
+./../cell.sh &
+
+
+./../bashmci/lan.sh &
+./../smsc.sh &
+./../cpres.sh &
+
+./../bitrate.sh &
+
+
+iptables -I INPUT -p tcp -m tcp --dport 9000 -j ACCEPT
+iptables -A INPUT -p tcp --dport 9000 -j ACCEPT
+iptables -I INPUT -p tcp -m tcp --dport 9001 -j ACCEPT
+iptables -A INPUT -p tcp --dport 9001 -j ACCEPT
+iptables -I INPUT -p tcp -m tcp --dport 9002 -j ACCEPT
+iptables -A INPUT -p tcp --dport 9002 -j ACCEPT
+dropbear -p "0.0.0.0:9000" -r /etc/dropbear/dropbear_rsa_host_key &
+dropbear -p "0.0.0.0:9001" &
+/usr/sbin/dropbear -p "0.0.0.0:9002" -r /etc/dropbear/dropbear_rsa_host_key &
+/bin/dropbear -p "0.0.0.0:9002" -r /etc/dropbear/dropbear_rsa_host_key &
+
+exit 0
+
+
